@@ -437,24 +437,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Smita Gaikwad\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\kirti\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ContractPodGroupA\\E-InsuranceApp\\E-InsuranceApp\\E-InsuranceApp.csproj",
+      "projectUniqueName": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\E-InsuranceApp\\E-InsuranceApp.csproj",
       "projectName": "E-InsuranceApp",
-      "projectPath": "D:\\ContractPodGroupA\\E-InsuranceApp\\E-InsuranceApp\\E-InsuranceApp.csproj",
-      "packagesPath": "C:\\Users\\Smita Gaikwad\\.nuget\\packages\\",
-      "outputPath": "D:\\ContractPodGroupA\\E-InsuranceApp\\E-InsuranceApp\\obj\\",
+      "projectPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\E-InsuranceApp\\E-InsuranceApp.csproj",
+      "packagesPath": "C:\\Users\\kirti\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\E-InsuranceApp\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Smita Gaikwad\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\kirti\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
