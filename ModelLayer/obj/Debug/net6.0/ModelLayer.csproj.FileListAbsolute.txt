@@ -10,3 +10,15 @@ C:\Users\kirti\Vikrant\CDAC\E-Insurance-App\E-InsuranceApp-GroupA\ModelLayer\obj
 C:\Users\kirti\Vikrant\CDAC\E-Insurance-App\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\refint\ModelLayer.dll
 C:\Users\kirti\Vikrant\CDAC\E-Insurance-App\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ModelLayer.pdb
 C:\Users\kirti\Vikrant\CDAC\E-Insurance-App\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ref\ModelLayer.dll
+D:\BRIDGELABZ\E-InsuranceApp-GroupA\ModelLayer\bin\Debug\net6.0\ModelLayer.deps.json
+D:\BRIDGELABZ\E-InsuranceApp-GroupA\ModelLayer\bin\Debug\net6.0\ModelLayer.dll
+D:\BRIDGELABZ\E-InsuranceApp-GroupA\ModelLayer\bin\Debug\net6.0\ModelLayer.pdb
+D:\BRIDGELABZ\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ModelLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\BRIDGELABZ\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ModelLayer.AssemblyInfoInputs.cache
+D:\BRIDGELABZ\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ModelLayer.AssemblyInfo.cs
+D:\BRIDGELABZ\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ModelLayer.csproj.CoreCompileInputs.cache
+D:\BRIDGELABZ\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ModelLayer.sourcelink.json
+D:\BRIDGELABZ\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ModelLayer.dll
+D:\BRIDGELABZ\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\refint\ModelLayer.dll
+D:\BRIDGELABZ\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ModelLayer.pdb
+D:\BRIDGELABZ\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ref\ModelLayer.dll

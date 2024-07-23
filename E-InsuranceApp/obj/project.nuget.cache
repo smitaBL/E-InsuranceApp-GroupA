@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "KicBeN9ZmCwwziov7Le6/XJ4vXlaGbwF84DEnosR7Gyi7gtydmYkektOsCCi69EGaElT+AsgFwUsFNzvN5tOUw==",
+  "dgSpecHash": "zW5ufEIafA06UHTa0nqN9VGacRO4o1Av1wOuO7I9WqAmYija54HklPICLQ7gpeVBCJzapjNhIbXuHXPVqH/kjQ==",
   "success": true,
   "projectFilePath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\E-InsuranceApp\\E-InsuranceApp.csproj",
   "expectedPackageFiles": [
@@ -41,6 +41,7 @@
     "C:\\Users\\renuk\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\renuk\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\renuk\\.nuget\\packages\\mimekit\\4.6.0\\mimekit.4.6.0.nupkg.sha512",
+    "C:\\Users\\renuk\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\renuk\\.nuget\\packages\\rabbitmq.client\\6.8.1\\rabbitmq.client.6.8.1.nupkg.sha512",
     "C:\\Users\\renuk\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\renuk\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
