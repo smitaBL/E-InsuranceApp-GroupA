@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ModelLayer
 {
-    internal class EmailModel
+    public class EmailML
     {
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 }
