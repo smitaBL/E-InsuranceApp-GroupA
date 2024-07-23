@@ -130,6 +130,18 @@
               "target": "Package",
               "version": "[6.0.0, )"
             },
+            "NLog": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "NLog.Database": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "NLog.Web.AspNetCore": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
@@ -288,8 +300,6 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.0, )"
-<<<<<<< HEAD
-=======
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -298,7 +308,6 @@
             "RabbitMQ.Client": {
               "target": "Package",
               "version": "[6.8.1, )"
->>>>>>> b0c7953743fff3dea1467714c9529fd34be5203f
             }
           },
           "imports": [

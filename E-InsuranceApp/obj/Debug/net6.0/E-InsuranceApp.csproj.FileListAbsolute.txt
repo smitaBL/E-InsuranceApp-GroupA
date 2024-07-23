@@ -163,3 +163,11 @@ D:\BRIDGELABZ\E-InsuranceApp-GroupA\E-InsuranceApp\obj\Debug\net6.0\refint\E-Ins
 D:\BRIDGELABZ\E-InsuranceApp-GroupA\E-InsuranceApp\obj\Debug\net6.0\E-InsuranceApp.pdb
 D:\BRIDGELABZ\E-InsuranceApp-GroupA\E-InsuranceApp\obj\Debug\net6.0\E-InsuranceApp.genruntimeconfig.cache
 D:\BRIDGELABZ\E-InsuranceApp-GroupA\E-InsuranceApp\obj\Debug\net6.0\ref\E-InsuranceApp.dll
+C:\Users\kirti\Vikrant\CDAC\E-Insurance-App\E-InsuranceApp-GroupA\E-InsuranceApp\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\kirti\Vikrant\CDAC\E-Insurance-App\E-InsuranceApp-GroupA\E-InsuranceApp\bin\Debug\net6.0\RabbitMQ.Client.dll
+C:\Users\kirti\Vikrant\CDAC\E-Insurance-App\E-InsuranceApp-GroupA\E-InsuranceApp\bin\Debug\net6.0\System.Threading.Channels.dll
+C:\Users\kirti\Vikrant\CDAC\E-Insurance-App\E-InsuranceApp-GroupA\E-InsuranceApp\bin\Debug\net6.0\NLog.dll
+C:\Users\kirti\Vikrant\CDAC\E-Insurance-App\E-InsuranceApp-GroupA\E-InsuranceApp\bin\Debug\net6.0\NLog.Database.dll
+C:\Users\kirti\Vikrant\CDAC\E-Insurance-App\E-InsuranceApp-GroupA\E-InsuranceApp\bin\Debug\net6.0\NLog.Extensions.Logging.dll
+C:\Users\kirti\Vikrant\CDAC\E-Insurance-App\E-InsuranceApp-GroupA\E-InsuranceApp\bin\Debug\net6.0\NLog.Web.AspNetCore.dll
+C:\Users\kirti\Vikrant\CDAC\E-Insurance-App\E-InsuranceApp-GroupA\E-InsuranceApp\bin\Debug\net6.0\nlog.config
