@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj": {}
+    "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj": {
+    "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
         "projectName": "ModelLayer",
-        "projectPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
-        "packagesPath": "C:\\Users\\kirti\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\ModelLayer\\obj\\",
+        "projectPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\kirti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -55,21 +60,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj": {
+    "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj",
         "projectName": "RepositoryLayer",
-        "projectPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj",
-        "packagesPath": "C:\\Users\\kirti\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\RepositoryLayer\\obj\\",
+        "projectPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\RepositoryLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\kirti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -83,8 +88,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj": {
-                "projectPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj"
+              "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj": {
+                "projectPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj"
               }
             }
           }
@@ -93,6 +98,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -134,6 +144,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.8.1, )"
             }
           },
           "imports": [
@@ -152,7 +170,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     }
