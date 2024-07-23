@@ -288,6 +288,17 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.0, )"
+<<<<<<< HEAD
+=======
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.8.1, )"
+>>>>>>> b0c7953743fff3dea1467714c9529fd34be5203f
             }
           },
           "imports": [

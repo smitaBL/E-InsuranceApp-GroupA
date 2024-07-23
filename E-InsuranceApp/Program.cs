@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RepositoryLayer.Context;
+using RepositoryLayer.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,9 @@ builder.Services.AddDbContext<EInsuranceDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("EInsurance"));
 });
+
+builder.Services.AddScoped<RabbitMQService>();
+builder.Services.AddScoped<EmailService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
