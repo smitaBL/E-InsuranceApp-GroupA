@@ -25,7 +25,6 @@ builder.Services.AddScoped<IAdminBL, AdminBL>();
 builder.Services.AddScoped<ICustomerRL, CustomerRL>();
 builder.Services.AddScoped<ICustomerBL, CustomerBL>();
 builder.Services.AddScoped<RabbitMQService>();
-builder.Services.AddScoped<EmailService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

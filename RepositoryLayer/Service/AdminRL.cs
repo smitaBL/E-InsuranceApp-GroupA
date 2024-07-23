@@ -16,12 +16,12 @@ namespace RepositoryLayer.Service
     public class AdminRL : IAdminRL
     {
         private readonly EInsuranceDbContext _context;
-        private readonly EmailService emailService;
+        private readonly RabbitMQService rabbitMQService;
 
-        public AdminRL(EInsuranceDbContext context, EmailService emailService)
+        public AdminRL(EInsuranceDbContext context, RabbitMQService rabbitMQService)
         {
             _context = context;
-            this.emailService = emailService;
+            this.rabbitMQService = rabbitMQService;
         }
 
         public async Task<AdminEntity> RegisterAsync(AdminEntity admin)
@@ -31,15 +31,17 @@ namespace RepositoryLayer.Service
                 var adminEntity = await _context.Admins.FirstOrDefaultAsync(x => x.AdminID == admin.AdminID);
                 if (adminEntity != null)
                     throw new AdminException("Email Id Already Exists Please Login!!");
-                _context.Admins.Add(adminEntity);
+                _context.Admins.Add(admin);
+
                 EmailML emailML = new EmailML()
                 {
-                    Email = adminEntity.Email,
-                    Password = adminEntity.Password,
+                    Name = admin.FullName,
+                    Email = admin.Email,
+                    Password = PasswordHashing.Decrypt(admin.Password),
                 };
-                emailService.SendRegisterMail(emailML);
+                rabbitMQService.SendProductMessage(emailML);
                 await _context.SaveChangesAsync();
-                return adminEntity;
+                return admin;
             }
             catch (Exception ex)
             {

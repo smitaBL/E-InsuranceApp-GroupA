@@ -14,15 +14,12 @@ namespace E_InsuranceApp.Controllers
         private readonly IAdminBL adminBL;
         private readonly ResponseML responseML;
 
-        public AdminController(IAdminBL adminBL, ResponseML responseML)
+        public AdminController(IAdminBL adminBL)
         {
             this.adminBL = adminBL;
             responseML = new ResponseML();
         }
 
-
-
-        [AllowAnonymous]
         [HttpPost("Register/Admin")]
         public async Task<IActionResult> RegisterAdminAsync(AdminML model)
         {
@@ -47,5 +44,7 @@ namespace E_InsuranceApp.Controllers
 
             return StatusCode(201, responseML);
         }
+
+
     }
 }
