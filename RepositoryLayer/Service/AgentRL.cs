@@ -14,12 +14,10 @@ namespace RepositoryLayer.Service
     public class AgentRL : IAgentRL
     {
         private readonly EInsuranceDbContext _context;
-        private readonly EmailService _emailService;
         private readonly RabbitMQService rabbitMQService;
-        public AgentRL(EInsuranceDbContext context,EmailService emailService,RabbitMQService rabbitMQService)
+        public AgentRL(EInsuranceDbContext context,RabbitMQService rabbitMQService)
         {
             this._context = context;
-            this._emailService = emailService;
             this.rabbitMQService = rabbitMQService;
         }
         public async Task<InsuranceAgentEntity> CreateAgentAsync(InsuranceAgentEntity insuranceAgentML)
@@ -32,7 +30,6 @@ namespace RepositoryLayer.Service
                 Email = insuranceAgentML.Email,
                 Password = PasswordHashing.Decrypt(insuranceAgentML.Password),
             };
-            _emailService.SendRegisterMail(emailML);
             rabbitMQService.SendProductMessage(insuranceAgentML);
             return insuranceAgentML;
         }

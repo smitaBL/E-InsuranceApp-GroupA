@@ -14,11 +14,11 @@ namespace RepositoryLayer.Service
     public class EmployeeRL : IEmployeeRL
     {
         private readonly EInsuranceDbContext _context;
-        private readonly EmailService _emailService;
-        public EmployeeRL(EInsuranceDbContext context,EmailService emailService)
+        private readonly RabbitMQService rabbitmqService;
+        public EmployeeRL(EInsuranceDbContext context, RabbitMQService rabbitmqService)
         {
             this._context = context;
-            this._emailService = emailService;
+            this.rabbitmqService = rabbitmqService;
         }
         public async Task<EmployeeEntity> CreateEmployeeAsync(EmployeeEntity employee)
         {
@@ -31,7 +31,9 @@ namespace RepositoryLayer.Service
                 Email = employee.Email,
                 Password = PasswordHashing.Decrypt(employee.Password),
             };
-            _emailService.SendRegisterMail(emailML);
+
+            rabbitmqService.SendProductMessage(emailML);
+
             return employee;
         }
     }

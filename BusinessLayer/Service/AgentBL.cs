@@ -3,12 +3,6 @@ using MediatR;
 using ModelLayer;
 using RepositoryLayer.Commands.Agent;
 using RepositoryLayer.Entity;
-using RepositoryLayer.Handlers.Agent;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Service
 {
