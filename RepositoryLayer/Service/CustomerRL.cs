@@ -24,11 +24,51 @@ namespace RepositoryLayer.Service
             this.rabbitMQService = rabbitMQService;
         }
 
+        public async Task DeleteCustomerByIdAsync(int id)
+        {
+            try
+            {
+                var admin = await _context.Customers
+                    .FromSqlRaw("EXEC sp_DeleteCustomerById @Id={0}", id)
+                    .FirstOrDefaultAsync();
+
+                if (admin == null)
+                {
+                    throw new AdminException("Customer not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new AdminException(ex.Message);
+            }
+        }
+
         public async Task<List<CustomerEntity>> GetAllCustomersAsync()
         {
             try
             {
                 return await _context.Customers.FromSqlRaw("EXEC sp_GetAllCustomers").ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new CustomerException(ex.Message);
+            }
+        }
+
+        public async Task<CustomerEntity> GetCustomerByIdAsync(int id)
+        {
+            try
+            {
+                var customer = await _context.Customers
+                    .FromSqlRaw("EXEC sp_GetCustomerById @Id={0}", id)
+                    .FirstOrDefaultAsync();
+
+                if (customer == null)
+                {
+                    throw new AdminException("Customer not found");
+                }
+
+                return customer;
             }
             catch (Exception ex)
             {
@@ -49,6 +89,41 @@ namespace RepositoryLayer.Service
                     Name = customer.FullName,
                     Email = customer.Email,
                     Password = customer.Password,
+                };
+                rabbitMQService.SendProductMessage(emailML);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new CustomerException(ex.Message);
+            }
+        }
+
+        public async Task UpdateCustomerAsync(int id, CustomerEntity customer)
+        {
+            try
+            {
+                var customerEntity = await _context.Customers.FirstOrDefaultAsync(x => x.CustomerID == id);
+                if (customerEntity == null)
+                    throw new CustomerException("Doesn't Exists!!");
+                else
+                {
+                    customerEntity.Username = customer.Username;
+                    customerEntity.FullName = customer.FullName;
+                    customerEntity.Email = customer.Email;
+                    customerEntity.Password = customer.Password;
+                    customerEntity.Phone = customer.Phone;
+                    customerEntity.DateOfBirth= customer.DateOfBirth;
+                    customerEntity.AgentID = customer.AgentID;
+                    _context.Customers.Update(customerEntity);
+                    await _context.SaveChangesAsync();
+                }
+
+                EmailML emailML = new EmailML()
+                {
+                    Name = customerEntity.FullName,
+                    Email = customerEntity.Email,
+                    Password = customerEntity.Password,
                 };
                 rabbitMQService.SendProductMessage(emailML);
                 await _context.SaveChangesAsync();

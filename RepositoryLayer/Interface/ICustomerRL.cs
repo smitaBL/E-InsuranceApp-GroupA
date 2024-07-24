@@ -9,7 +9,10 @@ namespace RepositoryLayer.Interface
 {
     public interface ICustomerRL
     {
+        Task DeleteCustomerByIdAsync(int id);
         Task<List<CustomerEntity>> GetAllCustomersAsync();
+        Task<CustomerEntity> GetCustomerByIdAsync(int id);
         Task RegisterAsync(CustomerEntity customer);
+        Task UpdateCustomerAsync(int id, CustomerEntity customer);
     }
 }

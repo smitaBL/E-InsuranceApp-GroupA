@@ -8,10 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BusinessLayer
-<<<<<<< HEAD
 build_property.ProjectDir = D:\BRIDGELABZ\E-InsuranceApp-GroupA\BusinessLayer\
-=======
-build_property.ProjectDir = C:\Users\DELL\OneDrive - HERE Global B.V\Desktop\CDAC\BridgeLabz_Assignment1\E-InsuranceApp-GroupA\BusinessLayer\
->>>>>>> 0ea0ce8cb61f3aeafb7fe53901864c01c7a78662
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
