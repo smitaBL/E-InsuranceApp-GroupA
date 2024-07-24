@@ -53,6 +53,15 @@ try
     builder.Services.AddScoped<ILoginBL, LoginBL>();
     builder.Services.AddScoped<ILoginRL, LoginRL>();
 
+    //Admin
+    builder.Services.AddScoped<IAdminBL, AdminBL>();
+    builder.Services.AddScoped<IAdminRL, AdminRL>();    
+
+    //Customer
+    builder.Services.AddScoped<ICustomerBL, CustomerBL>();
+    builder.Services.AddScoped<ICustomerRL, CustomerRL>();
+
+
     //RabbitMQ
     builder.Services.AddScoped<RabbitMQService>();
 
