@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Org.BouncyCastle.Crypto.Macs;
 using RepositoryLayer.Context;
 using System;
 using System.Collections.Generic;
@@ -13,13 +14,13 @@ namespace RepositoryLayer.Utilities
 {
     public class JwtTokenGenerator
     {
-        public static string GenerateToken(EInsuranceDbContext context, IConfiguration configuration, dynamic result, string role)
+        public static string GenerateToken(EInsuranceDbContext context, IConfiguration configuration, dynamic result,int Id, string role)
         {
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub, configuration["JWT:Subject"]),
-                new Claim("Id", result.Id.ToString()),
-                new Claim("Name", result.Name),
+                new Claim("Id", Id.ToString()),
+                new Claim("Name", result.FullName),
                 new Claim("Email", result.Email),
                 new Claim(ClaimTypes.Role, role)
             };

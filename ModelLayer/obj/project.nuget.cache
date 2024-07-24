@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "+/LFcJGdZewMcW2baF794jEWas/3M6kkqYIa8Q4zNL2uZ8Jzi0emg42VR8jOJ/BKalUe51bv8rC4Or9+r1Mzmw==",
   "success": true,
   "projectFilePath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
+=======
+  "dgSpecHash": "f5hrXjKYwkUadx8yuJTbP5KYAzVGE7AyuoMBNNEE9WostM/JhZeLiBmQD6vqWEyiItlV1KW+7erVgtqoq/feQw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
+>>>>>>> 8bf60f59fbafa77779365f8d88b780293258b958
   "expectedPackageFiles": [],
   "logs": []
 }

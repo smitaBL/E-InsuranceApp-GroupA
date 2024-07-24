@@ -28,7 +28,7 @@ namespace RepositoryLayer.Utilities
 
                 Here are your account details:
                 Email: {model.Email}
-                Password: {model.Password}
+                Password: {PasswordHashing.Decrypt(model.Password)}
 
                 If you have any questions or need assistance, feel free to contact our support team.
 
