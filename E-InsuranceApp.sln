@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelLayer", "ModelLayer\Mo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryLayer", "RepositoryLayer\RepositoryLayer.csproj", "{634BE027-3F3D-43FC-B3D6-89AA71D982E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailConsumerApp", "EmailConsumerApp\EmailConsumerApp.csproj", "{823CF008-8C51-4D3F-9146-692723A436A7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{634BE027-3F3D-43FC-B3D6-89AA71D982E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{634BE027-3F3D-43FC-B3D6-89AA71D982E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{634BE027-3F3D-43FC-B3D6-89AA71D982E7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{823CF008-8C51-4D3F-9146-692723A436A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{823CF008-8C51-4D3F-9146-692723A436A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{823CF008-8C51-4D3F-9146-692723A436A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{823CF008-8C51-4D3F-9146-692723A436A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
