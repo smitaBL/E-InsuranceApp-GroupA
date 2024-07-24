@@ -2,23 +2,32 @@ using BusinessLayer.Interface;
 using BusinessLayer.Service;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+
+using E_InsuranceApp.Controllers;
+using MediatR;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using NLog;
 using NLog.Web;
 using RepositoryLayer.Context;
 using RepositoryLayer.Handlers.Login;
+
+using RepositoryLayer.Handlers.Agent;
+
 using RepositoryLayer.Interface;
 using RepositoryLayer.Service;
 using RepositoryLayer.Utilities;
 using System.Reflection;
+
 using System.Text;
+
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Debug("init main");
 
 try
-{
+{ 
     var builder = WebApplication.CreateBuilder(args);
 
     // Add services to the container.
@@ -32,15 +41,29 @@ try
     builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
     builder.Services.AddMediatR(typeof(LoginHandler).Assembly);
 
+    //Agent
+    builder.Services.AddScoped<IAgentBL, AgentBL>();
+    builder.Services.AddScoped<IAgentRL, AgentRL>();
+
+    //Employee
+    builder.Services.AddScoped<IEmployeeRL, EmployeeRL>();
+    builder.Services.AddScoped<IEmployeeBL, EmployeeBL>();
+
     //Login
     builder.Services.AddScoped<ILoginBL, LoginBL>();
     builder.Services.AddScoped<ILoginRL, LoginRL>();
 
+    //Admin
+    builder.Services.AddScoped<IAdminBL, AdminBL>();
+    builder.Services.AddScoped<IAdminRL, AdminRL>();    
+
+    //Customer
+    builder.Services.AddScoped<ICustomerBL, CustomerBL>();
+    builder.Services.AddScoped<ICustomerRL, CustomerRL>();
+
+
     //RabbitMQ
     builder.Services.AddScoped<RabbitMQService>();
-
-    //EmailService
-    builder.Services.AddScoped<EmailService>();
 
     builder.Services.AddControllers();
 
