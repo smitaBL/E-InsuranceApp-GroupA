@@ -30,8 +30,6 @@ namespace RepositoryLayer.Utilities
                 Email: {model.Email}
                 Password: {model.Password}
 
-                Please log in and change your password immediately for security reasons.
-
                 If you have any questions or need assistance, feel free to contact our support team.
 
                 Best regards,
