@@ -44,6 +44,5 @@ namespace RepositoryLayer.Utilities
             smtp.Disconnect(true);
             return "Mail sent successfully";
         }
-
     }
 }

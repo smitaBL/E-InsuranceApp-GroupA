@@ -11,8 +11,6 @@ namespace RepositoryLayer.Utilities
     {
         private static readonly string EncryptionKey = "b14ca5898a4e4133bbce2ea2315a1916";
         private static readonly string iv = "1234567890123456";
-
-
         public static string Encrypt(string plainText)
         {
             using (Aes aesAlg = Aes.Create())
@@ -63,7 +61,6 @@ namespace RepositoryLayer.Utilities
                 }
             }
         }
-
     }
 }
     
