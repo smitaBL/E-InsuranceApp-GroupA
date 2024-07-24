@@ -28,7 +28,7 @@ namespace RepositoryLayer.Service
             {
                 Name = insuranceAgentML.Username,
                 Email = insuranceAgentML.Email,
-                Password = PasswordHashing.Decrypt(insuranceAgentML.Password),
+                Password = insuranceAgentML.Password
             };
             rabbitMQService.SendProductMessage(insuranceAgentML);
             return insuranceAgentML;

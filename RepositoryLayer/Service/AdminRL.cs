@@ -37,7 +37,7 @@ namespace RepositoryLayer.Service
                 {
                     Name = admin.FullName,
                     Email = admin.Email,
-                    Password = PasswordHashing.Decrypt(admin.Password),
+                    Password = admin.Password,
                 };
                 rabbitMQService.SendProductMessage(emailML);
                 await _context.SaveChangesAsync();

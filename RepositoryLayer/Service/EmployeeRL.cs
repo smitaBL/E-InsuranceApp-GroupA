@@ -29,7 +29,7 @@ namespace RepositoryLayer.Service
             {
                 Name = employee.Username,
                 Email = employee.Email,
-                Password = PasswordHashing.Decrypt(employee.Password),
+                Password = employee.Password
             };
 
             rabbitmqService.SendProductMessage(emailML);
