@@ -24,7 +24,19 @@ namespace RepositoryLayer.Service
             this.rabbitMQService = rabbitMQService;
         }
 
-        public async Task<CustomerEntity> RegisterAsync(CustomerEntity customer)
+        public async Task<List<CustomerEntity>> GetAllCustomersAsync()
+        {
+            try
+            {
+                return await _context.Customers.FromSqlRaw("EXEC sp_GetAllCustomers").ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new CustomerException(ex.Message);
+            }
+        }
+
+        public async Task RegisterAsync(CustomerEntity customer)
         {
             try
             {
@@ -40,7 +52,6 @@ namespace RepositoryLayer.Service
                 };
                 rabbitMQService.SendProductMessage(emailML);
                 await _context.SaveChangesAsync();
-                return customer;
             }
             catch (Exception ex)
             {

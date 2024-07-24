@@ -10,6 +10,10 @@ namespace BusinessLayer.Interface
 {
     public interface IAdminBL
     {
-        Task<AdminEntity> RegisterAsync(AdminML model);
+        Task DeleteAdminByIdAsync(int id);
+        Task<AdminEntity> GetAdminByIdAsync(int id);
+        Task<List<AdminEntity>> GetAllAdminAsync();
+        Task RegisterAsync(AdminML model);
+        Task UpdateAdminByIdAsync(int id, AdminML model);
     }
 }

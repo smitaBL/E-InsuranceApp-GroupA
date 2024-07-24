@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RepositoryLayer.Commands.Customer
 {
-    public class CreateCustomerCommand : IRequest<CustomerEntity>
+    public class CreateCustomerCommand : IRequest
     {
         public string username;
         public string fullName;

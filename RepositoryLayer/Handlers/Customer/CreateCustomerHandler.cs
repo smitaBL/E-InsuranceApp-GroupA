@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace RepositoryLayer.Handlers.Customer
 {
-    public class CreateCustomerHandler : IRequestHandler<CreateCustomerCommand, CustomerEntity>
+    public class CreateCustomerHandler : IRequestHandler<CreateCustomerCommand>
     {
         private readonly ICustomerRL customerRL;
 
@@ -20,7 +20,7 @@ namespace RepositoryLayer.Handlers.Customer
             this.customerRL = customerRL;
         }
 
-        public async Task<CustomerEntity> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
         {
             CustomerEntity customer = new CustomerEntity()
             {
@@ -33,8 +33,8 @@ namespace RepositoryLayer.Handlers.Customer
                 AgentID = request.agentID,
 
             };
-            var result = await  customerRL.RegisterAsync(customer);
-            return result;
+            await  customerRL.RegisterAsync(customer);
+            return Unit.Value;
         }
     }
 }

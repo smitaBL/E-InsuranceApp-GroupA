@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RepositoryLayer.Commands.Admin
 {
-    public class CreateAdminCommand : IRequest<AdminEntity>
+    public class CreateAdminCommand : IRequest
     {
         public string username;
         public string email;

@@ -19,22 +19,16 @@ namespace E_InsuranceApp.Controllers
             this.responseML = new ResponseML();
         }
 
-
-
         [HttpPost("Register/Customer")]
         public async Task<IActionResult> RegisterCustomerAsync(CustomerML model)
         {
             try
             {
-                var result = await customerBL.RegisterAsync(model);
-                if (result != null)
-                {
-
+                await customerBL.RegisterAsync(model);
+                
                     responseML.Success = true;
                     responseML.Message = "Customer Created Successfully";
-                    responseML.Data = result;
-
-                }
+                    
             }
             catch (CustomerException ex)
             {
@@ -44,6 +38,27 @@ namespace E_InsuranceApp.Controllers
             }
 
             return StatusCode(201, responseML);
+        }
+        [HttpGet("Register/GetAllCustomer")]
+        public async Task<IActionResult> GetAllCustomerAsync()
+        {
+            try
+            {
+                var result = await customerBL.GetAllCustomerAsync();
+
+                responseML.Success = true;
+                responseML.Message = "Customer Fetched Successfully";
+                responseML.Data = result;
+
+            }
+            catch (CustomerException ex)
+            {
+                responseML.Success = false;
+                responseML.Message = ex.Message;
+                return StatusCode(400, responseML);
+            }
+
+            return StatusCode(200, responseML);
         }
     }
 }
