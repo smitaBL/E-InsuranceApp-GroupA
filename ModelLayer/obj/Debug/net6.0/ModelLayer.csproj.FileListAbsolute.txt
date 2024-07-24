@@ -22,3 +22,15 @@ D:\BRIDGELABZ\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ModelLayer.dll
 D:\BRIDGELABZ\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\refint\ModelLayer.dll
 D:\BRIDGELABZ\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ModelLayer.pdb
 D:\BRIDGELABZ\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ref\ModelLayer.dll
+C:\Users\DELL\OneDrive - HERE Global B.V\Desktop\CDAC\BridgeLabz_Assignment1\E-InsuranceApp-GroupA\ModelLayer\bin\Debug\net6.0\ModelLayer.deps.json
+C:\Users\DELL\OneDrive - HERE Global B.V\Desktop\CDAC\BridgeLabz_Assignment1\E-InsuranceApp-GroupA\ModelLayer\bin\Debug\net6.0\ModelLayer.dll
+C:\Users\DELL\OneDrive - HERE Global B.V\Desktop\CDAC\BridgeLabz_Assignment1\E-InsuranceApp-GroupA\ModelLayer\bin\Debug\net6.0\ModelLayer.pdb
+C:\Users\DELL\OneDrive - HERE Global B.V\Desktop\CDAC\BridgeLabz_Assignment1\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ModelLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\OneDrive - HERE Global B.V\Desktop\CDAC\BridgeLabz_Assignment1\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ModelLayer.AssemblyInfoInputs.cache
+C:\Users\DELL\OneDrive - HERE Global B.V\Desktop\CDAC\BridgeLabz_Assignment1\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ModelLayer.AssemblyInfo.cs
+C:\Users\DELL\OneDrive - HERE Global B.V\Desktop\CDAC\BridgeLabz_Assignment1\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ModelLayer.csproj.CoreCompileInputs.cache
+C:\Users\DELL\OneDrive - HERE Global B.V\Desktop\CDAC\BridgeLabz_Assignment1\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ModelLayer.sourcelink.json
+C:\Users\DELL\OneDrive - HERE Global B.V\Desktop\CDAC\BridgeLabz_Assignment1\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ModelLayer.dll
+C:\Users\DELL\OneDrive - HERE Global B.V\Desktop\CDAC\BridgeLabz_Assignment1\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\refint\ModelLayer.dll
+C:\Users\DELL\OneDrive - HERE Global B.V\Desktop\CDAC\BridgeLabz_Assignment1\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ModelLayer.pdb
+C:\Users\DELL\OneDrive - HERE Global B.V\Desktop\CDAC\BridgeLabz_Assignment1\E-InsuranceApp-GroupA\ModelLayer\obj\Debug\net6.0\ref\ModelLayer.dll
