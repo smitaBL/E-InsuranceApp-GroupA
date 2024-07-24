@@ -14,19 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RepositoryLayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-=======
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e399e18c7b62d6614aeb2b427a5747f54b2d105d")]
->>>>>>> 9b18321c0ace2b68c085344046d1a5719a3b2583
->>>>>>> 690d5bb51448d261ffe1e71567bd7c2823b0760f
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+963df1cea93f5f2ef67d093a771a45109de7f146")]
->>>>>>> Renuka/Admin-CustomerRegistration
 [assembly: System.Reflection.AssemblyProductAttribute("RepositoryLayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RepositoryLayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
