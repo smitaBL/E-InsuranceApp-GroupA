@@ -61,6 +61,9 @@ try
     builder.Services.AddScoped<ICustomerBL, CustomerBL>();
     builder.Services.AddScoped<ICustomerRL, CustomerRL>();
 
+    //InsurancePlan
+    builder.Services.AddScoped<IInsurancePlanBL, InsurancePlanBL>();
+    builder.Services.AddScoped<IInsurancePlanRL, InsurancePlanRL>();
 
     //RabbitMQ
     builder.Services.AddScoped<RabbitMQService>();
