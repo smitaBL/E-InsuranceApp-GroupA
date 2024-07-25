@@ -10,6 +10,10 @@ namespace BusinessLayer.Interface
 {
     public interface IAgentBL
     {
-        Task<InsuranceAgentEntity> CreateAgentAsync(InsuranceAgentML insuranceAgentML);
+        Task CreateAgentAsync(InsuranceAgentML insuranceAgentML);
+        Task DeleteAgentAsync(int id);
+        Task<List<InsuranceAgentEntity>> GetAllAgentAsync();
+        Task<InsuranceAgentEntity> GetByIdAgentAsync(int id);
+        Task UpdateAgentAsync(int id, InsuranceAgentML insuranceAgentML);
     }
 }

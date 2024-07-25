@@ -44,7 +44,5 @@ namespace E_InsuranceApp.Controllers
 
             return StatusCode(201, responseML);
         }
-
-
     }
 }

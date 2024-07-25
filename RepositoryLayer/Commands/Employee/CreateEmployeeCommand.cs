@@ -3,7 +3,7 @@ using RepositoryLayer.Entity;
 
 namespace BusinessLayer.Service
 {
-    public class CreateEmployeeCommand : IRequest<EmployeeEntity>
+    public class CreateEmployeeCommand : IRequest
     {
         public string username;
         public string password;

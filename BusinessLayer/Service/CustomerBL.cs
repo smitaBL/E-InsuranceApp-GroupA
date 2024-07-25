@@ -28,9 +28,9 @@ namespace BusinessLayer.Service
                 var result = await mediator.Send(new CreateCustomerCommand(model.Username, model.FullName, model.Email, model.Password,model.Phone,model.DateOfBirth,model.AgentID ));
                 return result;
             }
-            catch
+            catch(Exception ex) 
             {
-                throw;
+                throw ex;
             }
         }
     }

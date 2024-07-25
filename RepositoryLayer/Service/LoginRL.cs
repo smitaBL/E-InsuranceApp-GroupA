@@ -24,7 +24,6 @@ namespace RepositoryLayer.Service
             _configuration = configuration;
         }
 
-
         public async Task<string> LoginAsync(LoginML model)
         {
             switch (model.Role)
@@ -47,7 +46,6 @@ namespace RepositoryLayer.Service
                     {
                         throw new LoginException("Invalid Email/Password");
                     }
-
                     break;
 
                 case "Employee":
@@ -67,7 +65,6 @@ namespace RepositoryLayer.Service
                     {
                         throw new LoginException("Invalid Email/Password");
                     }
-
                     break;
 
                 case "Agent":
@@ -87,7 +84,6 @@ namespace RepositoryLayer.Service
                     {
                         throw new LoginException("Invalid Email/Password");
                     }
-
                     break;
 
                 case "Customer":
@@ -107,17 +103,11 @@ namespace RepositoryLayer.Service
                     {
                         throw new LoginException("Invalid Email/Password");
                     }
-
                     break;
 
                 default:
                     throw new LoginException("Invalid Login Credentials");
             }
-
-            
-
-            
         }
-
     }
 }

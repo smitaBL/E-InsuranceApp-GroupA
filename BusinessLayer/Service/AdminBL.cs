@@ -29,9 +29,9 @@ namespace BusinessLayer.Service
                 var result = await mediator.Send(new CreateAdminCommand(model.Username, model.Email, model.Password, model.FullName));
                 return result;
             }
-            catch
+            catch(Exception ex) 
             {
-                throw;
+                throw ex;
             }
         }
     }

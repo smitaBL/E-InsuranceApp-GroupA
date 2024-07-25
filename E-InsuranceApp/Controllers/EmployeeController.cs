@@ -23,31 +23,86 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
-                var agent = await employeeBL.CreateEmployeeAsync(employeeEntity);
+                await employeeBL.CreateEmployeeAsync(employeeEntity);
                 responseML.Success = true;
-                responseML.Data = agent;
                 responseML.Message = "Employee created successfully";
                 return StatusCode(201, responseML);
             }
             catch (EmployeeException ex)
             {
-                var result = new ResponseML
-                {
-                    Success = false,
-                    Message = ex.Message,
-                    Data = null
-                };
-                return StatusCode(400, result);
+                responseML.Success = false;
+                responseML.Message = ex.Message;         
+                return StatusCode(400, responseML);
             }
-            catch (Exception ex)
+        }
+        [HttpPut("Update/Employee")]
+        public async Task<IActionResult> UpdateEmployeeAsync(int id,EmployeeML employeeEntity)
+        {
+            try
             {
-                var result = new ResponseML
-                {
-                    Success = false,
-                    Message = ex.Message,
-                    Data = null
-                };
-                return StatusCode(500, result);
+                await employeeBL.UpdateEmployeeAsync(id,employeeEntity);
+                responseML.Success = true;
+                responseML.Message = $"Employee with Id {id} updated successfully";
+                return StatusCode(201, responseML);
+            }
+            catch (EmployeeException ex)
+            {
+                responseML.Success = false;
+                responseML.Message = ex.Message;
+                return StatusCode(400, responseML);
+            }
+        }
+        [HttpGet("GetAll/Employee")]
+        public async Task<IActionResult> GetAllEmployeeAsync()
+        {
+            try
+            {
+                var result=await employeeBL.GetAllEmployeeAsync();
+                responseML.Success = true;
+                responseML.Data=result;
+                responseML.Message = "All Employees : ";
+                return StatusCode(201, responseML);
+            }
+            catch (EmployeeException ex)
+            {
+                responseML.Success = false;
+                responseML.Message = ex.Message;
+                return StatusCode(400, responseML);
+            }
+        }
+        [HttpGet("GetById/Employee")]
+        public async Task<IActionResult> GetByIdEmployeeAsync(int id)
+        {
+            try
+            {
+                var result=await employeeBL.GetByIdEmployeeAsync(id);
+                responseML.Success = true;
+                responseML.Data=result;
+                responseML.Message = $"Employee with Id {id} : ";
+                return StatusCode(201, responseML);
+            }
+            catch (EmployeeException ex)
+            {
+                responseML.Success = false;
+                responseML.Message = ex.Message;
+                return StatusCode(400, responseML);
+            }
+        }
+        [HttpDelete("Delete/Employee")]
+        public async Task<IActionResult> DeleteEmployeeAsync(int id)
+        {
+            try
+            {
+                await employeeBL.DeleteEmployeeAsync(id);
+                responseML.Success = true;
+                responseML.Message = $"Employee with Id {id} deleted successfully : ";
+                return StatusCode(201, responseML);
+            }
+            catch (EmployeeException ex)
+            {
+                responseML.Success = false;
+                responseML.Message = ex.Message;
+                return StatusCode(400, responseML);
             }
         }
     }

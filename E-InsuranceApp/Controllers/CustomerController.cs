@@ -19,8 +19,6 @@ namespace E_InsuranceApp.Controllers
             this.responseML = new ResponseML();
         }
 
-
-
         [HttpPost("Register/Customer")]
         public async Task<IActionResult> RegisterCustomerAsync(CustomerML model)
         {

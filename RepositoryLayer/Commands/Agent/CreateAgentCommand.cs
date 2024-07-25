@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RepositoryLayer.Commands.Agent
 {
-    public class CreateAgentCommand : IRequest<InsuranceAgentEntity>
+    public class CreateAgentCommand : IRequest
     {
         public string username;
         public string fullName;
