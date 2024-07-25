@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using RepositoryLayer.Commands.Admin;
 using RepositoryLayer.Entity;
+using RepositoryLayer.Exceptions;
 using RepositoryLayer.Interface;
 using RepositoryLayer.Utilities;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace RepositoryLayer.Handlers.Admin
 {
-    public class CreateAdminHandler : IRequestHandler<CreateAdminCommand, AdminEntity>
+    public class CreateAdminHandler : IRequestHandler<CreateAdminCommand>
     {
         private readonly IAdminRL adminRL;
 
@@ -20,17 +21,27 @@ namespace RepositoryLayer.Handlers.Admin
             this.adminRL = adminRL;
         }
 
-        public async Task<AdminEntity> Handle(CreateAdminCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateAdminCommand request, CancellationToken cancellationToken)
         {
-            AdminEntity admin = new AdminEntity()
+            try
             {
-                Username = request.username.ToLower(),
-                Password = PasswordHashing.Encrypt(request.password),
-                Email = request.email.ToLower(),
-                FullName = request.fullName.ToLower()
-            };
-            var result = await adminRL.RegisterAsync(admin);
-            return result;
+                AdminEntity admin = new AdminEntity()
+                {
+                    Username = request.username.ToLower(),
+                    Password = PasswordHashing.Encrypt(request.password),
+                    Email = request.email.ToLower(),
+                    FullName = request.fullName.ToLower()
+                };
+                await adminRL.RegisterAsync(admin);
+                return Unit.Value;
+            }
+            catch (Exception ex)
+            {
+                throw new AdminException(ex.Message);
+            }
+            
         }
+
+        
     }
 }

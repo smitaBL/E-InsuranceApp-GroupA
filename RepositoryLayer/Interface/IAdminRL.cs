@@ -9,6 +9,10 @@ namespace RepositoryLayer.Interface
 {
     public interface IAdminRL
     {
-        Task<AdminEntity> RegisterAsync(AdminEntity admin);
+        Task DeleteAdminByIdAsync(int id);
+        Task<AdminEntity> GetAdminByIdAsync(int id);
+        Task<List<AdminEntity>> GetAllAdminAsync();
+        Task RegisterAsync(AdminEntity admin);
+        Task UpdateAdminAsync(int id, AdminEntity admin);
     }
 }

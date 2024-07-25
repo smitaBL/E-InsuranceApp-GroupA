@@ -10,6 +10,10 @@ namespace BusinessLayer.Interface
 {
     public interface ICustomerBL
     {
-        Task<CustomerEntity> RegisterAsync(CustomerML model);
+        Task DeleteCustomerByIdAsync(int id);
+        Task<List<CustomerEntity>> GetAllCustomerAsync();
+        Task<CustomerEntity> GetCustomerByIdAsync(int id);
+        Task RegisterAsync(CustomerML model);
+        Task UpdateCustomerByIdAsync(int id, CustomerML model);
     }
 }

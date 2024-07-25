@@ -2,24 +2,17 @@ using BusinessLayer.Interface;
 using BusinessLayer.Service;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-
 using E_InsuranceApp.Controllers;
-using MediatR;
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using NLog;
 using NLog.Web;
 using RepositoryLayer.Context;
 using RepositoryLayer.Handlers.Login;
-
-using RepositoryLayer.Handlers.Agent;
-
 using RepositoryLayer.Interface;
 using RepositoryLayer.Service;
 using RepositoryLayer.Utilities;
 using System.Reflection;
-
 using System.Text;
 
 
@@ -61,6 +54,9 @@ try
     builder.Services.AddScoped<ICustomerBL, CustomerBL>();
     builder.Services.AddScoped<ICustomerRL, CustomerRL>();
 
+    //InsurancePlan
+    builder.Services.AddScoped<IInsurancePlanBL, InsurancePlanBL>();
+    builder.Services.AddScoped<IInsurancePlanRL, InsurancePlanRL>();
 
     //RabbitMQ
     builder.Services.AddScoped<RabbitMQService>();
