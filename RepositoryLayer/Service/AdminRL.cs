@@ -29,9 +29,7 @@ namespace RepositoryLayer.Service
         {
             try
             {
-                var admin = await _context.Admins
-                    .FromSqlRaw("EXEC sp_DeleteAdminById @Id={0}", id)
-                    .FirstOrDefaultAsync();
+                var admin = await _context.Database.ExecuteSqlRawAsync("EXEC sp_DeleteAdminById @Id = {0}", id);
 
                 if (admin == null)
                 {
@@ -48,15 +46,16 @@ namespace RepositoryLayer.Service
         {
             try
             {
-                var admin = await _context.Admins
-                    .FromSqlRaw("EXEC sp_GetAdminById @Id={0}", id)
-                    .FirstOrDefaultAsync();
+                var admins = await _context.Admins
+                .FromSqlRaw("EXEC sp_GetAdminById @Id = {0}", id)
+                .ToListAsync();
+
+                var admin = admins.FirstOrDefault();
 
                 if (admin == null)
                 {
                     throw new AdminException("Admin not found");
                 }
-
                 return admin;
             }
             catch (Exception ex)
@@ -106,24 +105,20 @@ namespace RepositoryLayer.Service
         {
             try
             {
-                var adminEntity = await _context.Admins.FirstOrDefaultAsync(x => x.AdminID == id);
-                if (adminEntity == null)
-                    throw new AdminException("Doesn't Exists!!");
-                else
+                var admins = await _context.Database.ExecuteSqlRawAsync("EXEC sp_UpdateAdminById @Id = {0}, @Username = {1}, @Password = {2}, @Email = {3}, @FullName = {4}",
+                id, admin.Username, admin.Password, admin.Email, admin.FullName);
+
+                if (admins == 0)
                 {
-                    adminEntity.Username= admin.Username;
-                    adminEntity.Password = admin.Password;
-                    adminEntity.Email = admin.Email;
-                    adminEntity.FullName = admin.FullName;
-                    _context.Admins.Update(adminEntity);
-                    await _context.SaveChangesAsync();
+                    throw new AdminException("Admin not found or could not be updated");
                 }
+
 
                 EmailML emailML = new EmailML()
                 {
-                    Name = adminEntity.FullName,
-                    Email = adminEntity.Email,
-                    Password = adminEntity.Password,
+                    Name = admin.FullName,
+                    Email = admin.Email,
+                    Password = admin.Password,
                 };
                 rabbitMQService.SendProductMessage(emailML);
                 await _context.SaveChangesAsync();
