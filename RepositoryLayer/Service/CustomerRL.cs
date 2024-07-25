@@ -28,18 +28,16 @@ namespace RepositoryLayer.Service
         {
             try
             {
-                var admin = await _context.Customers
-                    .FromSqlRaw("EXEC sp_DeleteCustomerById @Id={0}", id)
-                    .FirstOrDefaultAsync();
+                var customer = await _context.Database.ExecuteSqlRawAsync("EXEC sp_DeleteCustomerById @Id={0}", id);
 
-                if (admin == null)
+                if (customer == null)
                 {
-                    throw new AdminException("Customer not found");
+                    throw new CustomerException("Customer not found");
                 }
             }
             catch (Exception ex)
             {
-                throw new AdminException(ex.Message);
+                throw new CustomerException(ex.Message);
             }
         }
 
@@ -59,13 +57,14 @@ namespace RepositoryLayer.Service
         {
             try
             {
-                var customer = await _context.Customers
+                var customers = await _context.Customers
                     .FromSqlRaw("EXEC sp_GetCustomerById @Id={0}", id)
-                    .FirstOrDefaultAsync();
+                    .ToListAsync();
+                var customer = customers.FirstOrDefault();
 
                 if (customer == null)
                 {
-                    throw new AdminException("Customer not found");
+                    throw new CustomerException("Customer not found");
                 }
 
                 return customer;
@@ -103,27 +102,19 @@ namespace RepositoryLayer.Service
         {
             try
             {
-                var customerEntity = await _context.Customers.FirstOrDefaultAsync(x => x.CustomerID == id);
-                if (customerEntity == null)
-                    throw new CustomerException("Doesn't Exists!!");
-                else
+                var customers = await _context.Database.ExecuteSqlRawAsync("EXEC sp_UpdateCustomerById @Id = {0}, @Username = {1}, @FullName = {2}, @Email = {3}, @Password = {4}, @Phone = {5}, @DateOfBirth = {6}, @AgentID = {7}",
+                id, customer.Username, customer.FullName, customer.Email, customer.Password, customer.Phone, customer.DateOfBirth, customer.AgentID);
+
+                if (customers == 0)
                 {
-                    customerEntity.Username = customer.Username;
-                    customerEntity.FullName = customer.FullName;
-                    customerEntity.Email = customer.Email;
-                    customerEntity.Password = customer.Password;
-                    customerEntity.Phone = customer.Phone;
-                    customerEntity.DateOfBirth= customer.DateOfBirth;
-                    customerEntity.AgentID = customer.AgentID;
-                    _context.Customers.Update(customerEntity);
-                    await _context.SaveChangesAsync();
+                    throw new CustomerException("Customer not found or could not be updated");
                 }
 
                 EmailML emailML = new EmailML()
                 {
-                    Name = customerEntity.FullName,
-                    Email = customerEntity.Email,
-                    Password = customerEntity.Password,
+                    Name = customer.FullName,
+                    Email = customer.Email,
+                    Password = customer.Password,
                 };
                 rabbitMQService.SendProductMessage(emailML);
                 await _context.SaveChangesAsync();

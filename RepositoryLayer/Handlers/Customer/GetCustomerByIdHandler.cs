@@ -15,6 +15,11 @@ namespace RepositoryLayer.Handlers.Customer
     {
         private readonly ICustomerRL customerRL;
 
+        public GetCustomerByIdHandler(ICustomerRL customerRL)
+        {
+            this.customerRL = customerRL;
+        }
+
         public async Task<CustomerEntity> Handle(GetCustomerByIdQuery request, CancellationToken cancellationToken)
         {
             try

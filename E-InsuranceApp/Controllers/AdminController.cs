@@ -119,7 +119,7 @@ namespace E_InsuranceApp.Controllers
                 await adminBL.UpdateAdminByIdAsync(id,model);
 
                 responseML.Success = true;
-                responseML.Message = "Admin Deleted Successfully";
+                responseML.Message = "Admin Updated Successfully";
 
             }
             catch (AdminException ex)
