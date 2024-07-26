@@ -10,6 +10,10 @@ namespace RepositoryLayer.Interface
 {
     public interface IAgentRL
     {
-        Task<InsuranceAgentEntity> CreateAgentAsync(InsuranceAgentEntity insuranceAgentML);
+        Task CreateAgentAsync(InsuranceAgentEntity insuranceAgentML);
+        Task DeleteAgentAsync(int id);
+        Task<List<InsuranceAgentEntity>> GetAllAgentAsync();
+        Task<InsuranceAgentEntity> GetByIdAgentAsync(int id);
+        Task UpdateAgentAsync(int id, InsuranceAgentEntity insuranceAgent);
     }
 }

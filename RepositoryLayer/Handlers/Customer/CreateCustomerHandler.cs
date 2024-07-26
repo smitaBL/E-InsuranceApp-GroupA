@@ -22,17 +22,17 @@ namespace RepositoryLayer.Handlers.Customer
 
         public async Task<Unit> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
         {
-            CustomerEntity customer = new CustomerEntity()
-            {
-                Username = request.username.ToLower(),
-                FullName = request.fullName.ToLower(),
-                Email = request.email.ToLower(),
-                Password = PasswordHashing.Encrypt(request.password),
-                Phone = request.phone,
-                DateOfBirth = request.dateOfBirth,
-                AgentID = request.agentID,
+                CustomerEntity customer = new CustomerEntity()
+                {
+                    Username = request.username.ToLower(),
+                    FullName = request.fullName.ToLower(),
+                    Email = request.email.ToLower(),
+                    Password = PasswordHashing.Encrypt(request.password),
+                    Phone = request.phone,
+                    DateOfBirth = request.dateOfBirth,
+                    AgentID = request.agentID,
 
-            };
+                };
             await  customerRL.RegisterAsync(customer);
             return Unit.Value;
         }

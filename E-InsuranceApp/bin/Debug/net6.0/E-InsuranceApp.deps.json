@@ -15,6 +15,7 @@
           "Microsoft.EntityFrameworkCore.Design": "6.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.0",
+          "ModelLayer": "1.0.0",
           "NLog": "5.0.0",
           "NLog.Database": "5.0.0",
           "NLog.Web.AspNetCore": "5.0.0",
@@ -648,6 +649,7 @@
       },
       "BusinessLayer/1.0.0": {
         "dependencies": {
+          "ModelLayer": "1.0.0",
           "RepositoryLayer": "1.0.0"
         },
         "runtime": {

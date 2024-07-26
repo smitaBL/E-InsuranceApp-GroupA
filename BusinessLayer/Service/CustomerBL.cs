@@ -41,9 +41,9 @@ namespace BusinessLayer.Service
                 var result = await mediator.Send(new GetAllCustomersQuery());
                 return result;
             }
-            catch
+            catch(Exception ex) 
             {
-                throw;
+                throw ex;
             }
         }
 

@@ -5,6 +5,10 @@ namespace E_InsuranceApp.Controllers
 {
     public interface IEmployeeBL
     {
-        Task<EmployeeEntity> CreateEmployeeAsync(EmployeeML employeeEntity);
+        Task CreateEmployeeAsync(EmployeeML employeeEntity);
+        Task DeleteEmployeeAsync(int id);
+        Task<List<EmployeeEntity>> GetAllEmployeeAsync();
+        Task<EmployeeEntity> GetByIdEmployeeAsync(int id);
+        Task UpdateEmployeeAsync(int id, EmployeeML employeeEntity);
     }
 }

@@ -24,31 +24,86 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
-                var agent=await agentBL.CreateAgentAsync(insuranceAgentML);
+                await agentBL.CreateAgentAsync(insuranceAgentML);
                 responseML.Success = true;
-                responseML.Data= agent;
                 responseML.Message = "Agent created successfully";
                 return StatusCode(201, responseML);
             }
             catch (AgentException ex)
             {
-                var result = new ResponseML
-                {
-                    Success = false,
-                    Message = ex.Message,
-                    Data = null
-                };
-                return StatusCode(400,result);
+                responseML.Success = false;
+                responseML.Message = ex.Message;        
+                return StatusCode(400,responseML);
             }
-            catch (Exception ex)
+        }
+        [HttpPut("Update/Agent")]
+        public async Task<IActionResult> UpdateAgentAsync(int id, InsuranceAgentML insuranceAgentML)
+        {
+            try
             {
-                var result = new ResponseML
-                {
-                    Success = false,
-                    Message = ex.Message,
-                    Data = null
-                };
-                return StatusCode(500, result);
+                await agentBL.UpdateAgentAsync(id,insuranceAgentML);
+                responseML.Success = true;
+                responseML.Message = $"Agent with Id {id} updated successfully";
+                return StatusCode(201, responseML);
+            }
+            catch (AgentException ex)
+            {
+                responseML.Success = false;
+                responseML.Message = ex.Message;
+                return StatusCode(400, responseML);
+            }
+        }
+        [HttpGet("GetById/Agent")]
+        public async Task<IActionResult> GetByIdAgentAsync(int id)
+        {
+            try
+            {
+                var result=await agentBL.GetByIdAgentAsync(id);
+                responseML.Success = true;
+                responseML.Data= result;
+                responseML.Message = $"Agent with Id {id} : ";
+                return StatusCode(201, responseML);
+            }
+            catch (AgentException ex)
+            {
+                responseML.Success = false;
+                responseML.Message = ex.Message;
+                return StatusCode(400, responseML);
+            }
+        }
+        [HttpGet("GetAll/Agent")]
+        public async Task<IActionResult> GetAllAgentAsync()
+        {
+            try
+            {
+                var result=await agentBL.GetAllAgentAsync();
+                responseML.Success = true;
+                responseML.Data= result;
+                responseML.Message = "All Agents : ";
+                return StatusCode(201, responseML);
+            }
+            catch (AgentException ex)
+            {
+                responseML.Success = false;
+                responseML.Message = ex.Message;
+                return StatusCode(400, responseML);
+            }
+        }
+        [HttpDelete("Delete/Agent")]
+        public async Task<IActionResult> DeleteAgentAsync(int id)
+        {
+            try
+            {
+                await agentBL.DeleteAgentAsync(id);
+                responseML.Success = true;
+                responseML.Message = $"Agent with Id {id} deleted successfully";
+                return StatusCode(201, responseML);
+            }
+            catch (AgentException ex)
+            {
+                responseML.Success = false;
+                responseML.Message = ex.Message;
+                return StatusCode(400, responseML);
             }
         }
     }

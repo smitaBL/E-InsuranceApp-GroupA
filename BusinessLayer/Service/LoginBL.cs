@@ -21,9 +21,16 @@ namespace BusinessLayer.Service
 
         public async Task<string> LoginAsync(LoginML model)
         {
-            var result = await mediator.Send(new LoginQuery(model.Email, model.Password, model.Role));
-            
-            return result;
+            try
+            {
+                var result = await mediator.Send(new LoginQuery(model.Email, model.Password, model.Role));
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using ModelLayer;
+using RepositoryLayer.Exceptions;
 using RepositoryLayer.Interface;
 using RepositoryLayer.Queries.Login;
 using System;
@@ -21,16 +22,23 @@ namespace RepositoryLayer.Handlers.Login
 
         public Task<string> Handle(LoginQuery request, CancellationToken cancellationToken)
         {
-            var login = new LoginML()
+            try
             {
-                Email = request.Email,
-                Password = request.Password,
-                Role = request.Role
-            };
+                var login = new LoginML()
+                {
+                    Email = request.Email,
+                    Password = request.Password,
+                    Role = request.Role
+                };
 
-            var result = loginRL.LoginAsync(login);
+                var result = loginRL.LoginAsync(login);
 
-            return result;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new LoginException(ex.Message);
+            }
         }
     }
 }

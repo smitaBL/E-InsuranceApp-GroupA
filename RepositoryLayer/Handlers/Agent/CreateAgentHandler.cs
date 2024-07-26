@@ -2,6 +2,7 @@
 using ModelLayer;
 using RepositoryLayer.Commands.Agent;
 using RepositoryLayer.Entity;
+using RepositoryLayer.Exceptions;
 using RepositoryLayer.Interface;
 using RepositoryLayer.Utilities;
 using System;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace RepositoryLayer.Handlers.Agent
 {
-    public class CreateAgentHandler : IRequestHandler<CreateAgentCommand, InsuranceAgentEntity>
+    public class CreateAgentHandler : IRequestHandler<CreateAgentCommand>
     {
         private readonly IAgentRL agentRL;
 
@@ -21,16 +22,24 @@ namespace RepositoryLayer.Handlers.Agent
             this.agentRL = agentRL;
         }
 
-        public async Task<InsuranceAgentEntity> Handle(CreateAgentCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateAgentCommand request, CancellationToken cancellationToken)
         {
-            InsuranceAgentEntity insuranceAgent = new InsuranceAgentEntity
+            try
             {
-                Username = request.username.ToLower(),
-                FullName = request.fullName.ToLower(),
-                Email = request.email.ToLower(),
-                Password = PasswordHashing.Encrypt(request.password),
-            };
-            return await agentRL.CreateAgentAsync(insuranceAgent);
+                InsuranceAgentEntity insuranceAgent = new InsuranceAgentEntity
+                {
+                    Username = request.username.ToLower(),
+                    FullName = request.fullName.ToLower(),
+                    Email = request.email.ToLower(),
+                    Password = PasswordHashing.Encrypt(request.password),
+                };
+                await agentRL.CreateAgentAsync(insuranceAgent);
+                return Unit.Value;
+            }
+            catch (Exception ex)
+            {
+                throw new AgentException(ex.Message);
+            }
         }
     }
 }

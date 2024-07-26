@@ -42,9 +42,9 @@ namespace BusinessLayer.Service
                 var result = await mediator.Send(new GetAdminByIdQuery(id));
                 return result;
             }
-            catch
+            catch(Exception ex) 
             {
-                throw;
+                throw ex;
             }
         }
 

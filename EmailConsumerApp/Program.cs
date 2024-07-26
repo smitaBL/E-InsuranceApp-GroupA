@@ -11,7 +11,6 @@ namespace EmailConsumerApp
     {
         static void Main(string[] args)
         {
-           
             var factory = new ConnectionFactory
             {
                 HostName = "localhost"
@@ -26,7 +25,6 @@ namespace EmailConsumerApp
                 Console.WriteLine($"Email received: {message}");
                 var result = JsonConvert.DeserializeObject<EmailML>(message);
                 EmailService.SendRegisterMail(result);
-                
             };
             channel.BasicConsume(queue: "RegisterQueue", autoAck: true, consumer: consumer);
             Console.ReadKey();
