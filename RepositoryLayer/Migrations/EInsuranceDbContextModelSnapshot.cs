@@ -22,21 +22,6 @@ namespace RepositoryLayer.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("EmployeeEntitySchemeEntity", b =>
-                {
-                    b.Property<int>("EmployeesEmployeeID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SchemesSchemeID")
-                        .HasColumnType("int");
-
-                    b.HasKey("EmployeesEmployeeID", "SchemesSchemeID");
-
-                    b.HasIndex("SchemesSchemeID");
-
-                    b.ToTable("EmployeeEntitySchemeEntity");
-                });
-
             modelBuilder.Entity("RepositoryLayer.Entity.AdminEntity", b =>
                 {
                     b.Property<int>("AdminID")
@@ -210,6 +195,29 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("Employees");
                 });
 
+            modelBuilder.Entity("RepositoryLayer.Entity.EmployeeSchemeEntity", b =>
+                {
+                    b.Property<int>("EmployeeSchemeID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeSchemeID"), 1L, 1);
+
+                    b.Property<int?>("EmployeeID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SchemeID")
+                        .HasColumnType("int");
+
+                    b.HasKey("EmployeeSchemeID");
+
+                    b.HasIndex("EmployeeID");
+
+                    b.HasIndex("SchemeID");
+
+                    b.ToTable("EmployeeSchemes");
+                });
+
             modelBuilder.Entity("RepositoryLayer.Entity.InsuranceAgentEntity", b =>
                 {
                     b.Property<int>("AgentID")
@@ -365,6 +373,9 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("PlanID")
                         .HasColumnType("int");
 
+                    b.Property<double>("SchemeCover")
+                        .HasColumnType("float");
+
                     b.Property<string>("SchemeDetails")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -374,26 +385,17 @@ namespace RepositoryLayer.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<double>("SchemePrice")
+                        .HasColumnType("float");
+
+                    b.Property<int>("SchemeTenure")
+                        .HasColumnType("int");
+
                     b.HasKey("SchemeID");
 
                     b.HasIndex("PlanID");
 
                     b.ToTable("Schemes");
-                });
-
-            modelBuilder.Entity("EmployeeEntitySchemeEntity", b =>
-                {
-                    b.HasOne("RepositoryLayer.Entity.EmployeeEntity", null)
-                        .WithMany()
-                        .HasForeignKey("EmployeesEmployeeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RepositoryLayer.Entity.SchemeEntity", null)
-                        .WithMany()
-                        .HasForeignKey("SchemesSchemeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("RepositoryLayer.Entity.CommissionEntity", b =>
@@ -424,6 +426,23 @@ namespace RepositoryLayer.Migrations
                         .IsRequired();
 
                     b.Navigation("InsuranceAgent");
+                });
+
+            modelBuilder.Entity("RepositoryLayer.Entity.EmployeeSchemeEntity", b =>
+                {
+                    b.HasOne("RepositoryLayer.Entity.EmployeeEntity", "Employee")
+                        .WithMany("EmployeeSchemes")
+                        .HasForeignKey("EmployeeID")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("RepositoryLayer.Entity.SchemeEntity", "Scheme")
+                        .WithMany("EmployeeSchemes")
+                        .HasForeignKey("SchemeID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Scheme");
                 });
 
             modelBuilder.Entity("RepositoryLayer.Entity.PaymentEntity", b =>
@@ -482,6 +501,11 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("Policies");
                 });
 
+            modelBuilder.Entity("RepositoryLayer.Entity.EmployeeEntity", b =>
+                {
+                    b.Navigation("EmployeeSchemes");
+                });
+
             modelBuilder.Entity("RepositoryLayer.Entity.InsuranceAgentEntity", b =>
                 {
                     b.Navigation("Commissions");
@@ -503,6 +527,8 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("RepositoryLayer.Entity.SchemeEntity", b =>
                 {
+                    b.Navigation("EmployeeSchemes");
+
                     b.Navigation("Policies");
                 });
 #pragma warning restore 612, 618

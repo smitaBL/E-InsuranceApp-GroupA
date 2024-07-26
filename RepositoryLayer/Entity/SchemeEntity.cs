@@ -21,11 +21,20 @@ namespace RepositoryLayer.Entity
         [Required]
         public string SchemeDetails { get; set; }
 
+        [Required]
+        public double SchemePrice { get; set; }
+        
+        [Required]
+        public double SchemeCover {  get; set; }
+
+        [Required]
+        public int SchemeTenure { get; set; }
+
         [ForeignKey("InsurancePlan")]
         public int PlanID { get; set; }
         public InsurancePlanEntity InsurancePlan { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public ICollection<PolicyEntity> Policies { get; set; }
-        public ICollection<EmployeeEntity> Employees { get; set; }
+        public ICollection<EmployeeSchemeEntity> EmployeeSchemes { get; set; }
     }
 }
