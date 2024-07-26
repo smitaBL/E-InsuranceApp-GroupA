@@ -38,6 +38,10 @@ try
     builder.Services.AddScoped<IAgentBL, AgentBL>();
     builder.Services.AddScoped<IAgentRL, AgentRL>();
 
+    //Commission
+    builder.Services.AddScoped<ICommissionBL, CommissionBL>();
+    builder.Services.AddScoped<ICommissionRL,CommissionRL>();
+
     //Employee
     builder.Services.AddScoped<IEmployeeRL, EmployeeRL>();
     builder.Services.AddScoped<IEmployeeBL, EmployeeBL>();
