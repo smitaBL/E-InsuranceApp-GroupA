@@ -63,15 +63,13 @@ try
     builder.Services.AddScoped<IInsurancePlanBL, InsurancePlanBL>();
     builder.Services.AddScoped<IInsurancePlanRL, InsurancePlanRL>();
 
-<<<<<<< HEAD
     //Policy
     builder.Services.AddScoped<IPolicyBL, PolicyBL>();
     builder.Services.AddScoped<IPolicyRL, PolicyRL>();
-=======
     //Scheme
     builder.Services.AddScoped<ISchemeBL, SchemeBL>();
     builder.Services.AddScoped<ISchemeRL, SchemeRL>();
->>>>>>> Vikrant/Scheme
+
 
     //RabbitMQ
     builder.Services.AddScoped<RabbitMQService>();
