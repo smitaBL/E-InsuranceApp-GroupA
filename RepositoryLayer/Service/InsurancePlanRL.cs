@@ -32,7 +32,10 @@ namespace RepositoryLayer.Service
                     @PlanDetails = {model.PlanDetails}, 
                     @CreatedAt = {model.CreatedAt}");
 
-                Console.WriteLine(planID);
+                if(planID == 0)
+                {
+                    throw new InsurancePlanException("Error occured while adding insursnce plan");
+                }
             }
             catch (InsurancePlanException)
             {

@@ -14,6 +14,7 @@ using RepositoryLayer.Service;
 using RepositoryLayer.Utilities;
 using System.Reflection;
 using System.Text;
+using Microsoft.OpenApi.Models;
 
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
@@ -62,29 +63,69 @@ try
     builder.Services.AddScoped<IInsurancePlanBL, InsurancePlanBL>();
     builder.Services.AddScoped<IInsurancePlanRL, InsurancePlanRL>();
 
+<<<<<<< HEAD
+    //Policy
+    builder.Services.AddScoped<IPolicyBL, PolicyBL>();
+    builder.Services.AddScoped<IPolicyRL, PolicyRL>();
+=======
+    //Scheme
+    builder.Services.AddScoped<ISchemeBL, SchemeBL>();
+    builder.Services.AddScoped<ISchemeRL, SchemeRL>();
+>>>>>>> Vikrant/Scheme
+
     //RabbitMQ
     builder.Services.AddScoped<RabbitMQService>();
 
     builder.Services.AddControllers();
 
     //Authentication(JWT)
-    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-    {
-        options.RequireHttpsMetadata = false;
-        options.SaveToken = true;
-        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidAudience = builder.Configuration["JWT:Audience"],
-            ValidIssuer = builder.Configuration["JWT:Issuer"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]))
-        };
-    });
+    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme,options =>
+                    {
+                        options.RequireHttpsMetadata = false;
+                        options.SaveToken = true;
+                        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+                        {
+                            ValidateIssuer = true,
+                            ValidateAudience = true,
+                            ValidAudience = builder.Configuration["JWT:Audience"],
+                            ValidIssuer = builder.Configuration["JWT:Issuer"],
+                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]))
+                        };
+                    });
 
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
+    // builder.Services.AddSwaggerGen();
+
+    //Swagger
+    builder.Services.AddSwaggerGen(c =>
+    {
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "BookStore API", Version = "v1" });
+
+        var securityScheme = new OpenApiSecurityScheme
+        {
+            Name = "Authorization",
+            Description = "Enter JWT Bearer token **_only_**",
+            In = ParameterLocation.Header,
+            Type = SecuritySchemeType.Http,
+            Scheme = "bearer",
+            BearerFormat = "JWT",
+            Reference = new OpenApiReference
+            {
+                Id = JwtBearerDefaults.AuthenticationScheme,
+                Type = ReferenceType.SecurityScheme
+            }
+        };
+
+        c.AddSecurityDefinition(securityScheme.Reference.Id, securityScheme);
+
+        c.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+        { securityScheme, Array.Empty<string>() }
+        });
+    });
+
 
     //Logger
     builder.Logging.ClearProviders();
@@ -99,6 +140,8 @@ try
         app.UseSwaggerUI();
     }
 
+    app.UseAuthentication();
+
     app.UseAuthorization();
 
     app.MapControllers();
@@ -108,7 +151,7 @@ try
 catch (Exception ex)
 {
     logger.Error(ex);
-    throw (ex);
+    throw;
 }
 finally
 {

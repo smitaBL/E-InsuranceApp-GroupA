@@ -35,6 +35,6 @@ namespace RepositoryLayer.Entity
         public string Role { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public ICollection<SchemeEntity> Schemes { get; set; }
+        public ICollection<EmployeeSchemeEntity> EmployeeSchemes { get; set; }
     }
 }

@@ -80,7 +80,7 @@ namespace RepositoryLayer.Service
         {
             try
             {
-                var adminEntity = await _context.Admins.FirstOrDefaultAsync(x => x.AdminID == admin.AdminID);
+                var adminEntity = await _context.Admins.FirstOrDefaultAsync(x => x.Email == admin.Email);
                 if (adminEntity != null)
                     throw new AdminException("Email Id Already Exists Please Login!!");
                 _context.Admins.Add(admin);
