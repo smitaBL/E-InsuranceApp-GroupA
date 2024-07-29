@@ -8,11 +8,21 @@
     "net6.0": []
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\DELL\\.nuget\\packages\\": {}
+=======
+<<<<<<< HEAD
+    "C:\\Users\\kirti\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\renuk\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+>>>>>>> 3d3e9c8027695dd6abaabf67710b438179176c9d
+>>>>>>> c0a7b73955c278aa9f60e0a37351c41e290477e3
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
       "projectName": "ModelLayer",
       "projectPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
@@ -21,6 +31,31 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+<<<<<<< HEAD
+      "projectUniqueName": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
+      "projectName": "ModelLayer",
+      "projectPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
+      "packagesPath": "C:\\Users\\kirti\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\ModelLayer\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\kirti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+      "projectUniqueName": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
+      "projectName": "ModelLayer",
+      "projectPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
+      "packagesPath": "C:\\Users\\renuk\\.nuget\\packages\\",
+      "outputPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\ModelLayer\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\renuk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+>>>>>>> 3d3e9c8027695dd6abaabf67710b438179176c9d
+>>>>>>> c0a7b73955c278aa9f60e0a37351c41e290477e3
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -28,6 +63,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -40,11 +76,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -66,7 +97,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   },
@@ -75,7 +106,11 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
+<<<<<<< HEAD
       "message": "Problem reading the cache file C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+=======
+      "message": "Problem reading the cache file D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\ModelLayer\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+>>>>>>> c0a7b73955c278aa9f60e0a37351c41e290477e3
     }
   ]
 }
