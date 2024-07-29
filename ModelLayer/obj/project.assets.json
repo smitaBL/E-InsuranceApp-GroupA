@@ -8,16 +8,11 @@
     "net6.0": []
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\DELL\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\kirti\\.nuget\\packages\\": {}
->>>>>>> Vikrant/Scheme
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
       "projectName": "ModelLayer",
       "projectPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
@@ -26,16 +21,6 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-      "projectUniqueName": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
-      "projectName": "ModelLayer",
-      "projectPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
-      "packagesPath": "C:\\Users\\kirti\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\ModelLayer\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\kirti\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> Vikrant/Scheme
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -84,5 +69,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
