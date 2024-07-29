@@ -1,8 +1,21 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "f5hrXjKYwkUadx8yuJTbP5KYAzVGE7AyuoMBNNEE9WostM/JhZeLiBmQD6vqWEyiItlV1KW+7erVgtqoq/feQw==",
   "success": true,
   "projectFilePath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
+=======
+  "dgSpecHash": "Lb1y2yGoE9upwEW3J7i6OMObbkad62ejAkKhYth2Y7mTPn5D0gbGuzj0pdUKiI45t175YQnL3EsvcVTcfuJuVg==",
+  "success": true,
+  "projectFilePath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
+>>>>>>> 3d3e9c8027695dd6abaabf67710b438179176c9d
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\ModelLayer\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

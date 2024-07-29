@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Interface;
 using BusinessLayer.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer;
@@ -10,14 +11,15 @@ namespace E_InsuranceApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PolicyController : ControllerBase
     {
         private readonly IPolicyBL policyBL;
         private readonly ResponseML responseML;
-        public PolicyController(IPolicyBL policyBL, ResponseML responseML)
+        public PolicyController(IPolicyBL policyBL)
         {
             this.policyBL = policyBL;
-            this.responseML = responseML;
+            responseML = new ResponseML();
         }
 
         [HttpPost("Policy/AddPolicy")]
