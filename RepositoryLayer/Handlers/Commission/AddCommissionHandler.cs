@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Service;
 using MediatR;
 using ModelLayer;
+using RepositoryLayer.Entity;
 using RepositoryLayer.Exceptions;
 using RepositoryLayer.Interface;
 using System;
@@ -24,7 +25,7 @@ namespace RepositoryLayer.Handlers.Commission
         {
             try
             {
-                CommissionML commissionMl = new CommissionML
+                CommissionEntity commissionMl = new CommissionEntity
                 {
                     AgentID = request.agentID,
                     PolicyID = request.policyID,

@@ -63,6 +63,19 @@ try
     builder.Services.AddScoped<IInsurancePlanBL, InsurancePlanBL>();
     builder.Services.AddScoped<IInsurancePlanRL, InsurancePlanRL>();
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    //Policy
+    builder.Services.AddScoped<IPolicyBL, PolicyBL>();
+    builder.Services.AddScoped<IPolicyRL, PolicyRL>();
+    //Scheme
+    builder.Services.AddScoped<ISchemeBL, SchemeBL>();
+    builder.Services.AddScoped<ISchemeRL, SchemeRL>();
+=======
+<<<<<<< HEAD
+
+>>>>>>> Sakshi/CommissionCRUD
     //Policy
     builder.Services.AddScoped<IPolicyBL, PolicyBL>();
     builder.Services.AddScoped<IPolicyRL, PolicyRL>();
@@ -71,6 +84,7 @@ try
     builder.Services.AddScoped<ISchemeBL, SchemeBL>();
     builder.Services.AddScoped<ISchemeRL, SchemeRL>();
 
+>>>>>>> c0a7b73955c278aa9f60e0a37351c41e290477e3
 
     //RabbitMQ
     builder.Services.AddScoped<RabbitMQService>();
