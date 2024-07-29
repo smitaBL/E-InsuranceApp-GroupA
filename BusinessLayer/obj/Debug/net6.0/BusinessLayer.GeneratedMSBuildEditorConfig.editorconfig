@@ -8,10 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BusinessLayer
-<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\kirti\Vikrant\CDAC\E-Insurance-App\E-InsuranceApp-GroupA\BusinessLayer\
-=======
-build_property.ProjectDir = D:\BRIDGELABZ\E-InsuranceApp-GroupA\BusinessLayer\
->>>>>>> 3d3e9c8027695dd6abaabf67710b438179176c9d
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

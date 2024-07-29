@@ -33,7 +33,7 @@ namespace E_InsuranceApp.Controllers
                 responseML.Success = true;
                 responseML.Message = "Policy Created Successfully";
             }
-            catch (AdminException ex)
+            catch (PolicyException ex)
             {
                 responseML.Success = false;
                 responseML.Message = ex.Message;
@@ -58,7 +58,7 @@ namespace E_InsuranceApp.Controllers
 
                 }
             }
-            catch (AdminException ex)
+            catch (PolicyException ex)
             {
                 responseML.Success = false;
                 responseML.Message = ex.Message;
@@ -83,7 +83,7 @@ namespace E_InsuranceApp.Controllers
 
                 }
             }
-            catch (AdminException ex)
+            catch (PolicyException ex)
             {
                 responseML.Success = false;
                 responseML.Message = ex.Message;
@@ -104,7 +104,7 @@ namespace E_InsuranceApp.Controllers
                 responseML.Message = "Policy Deleted Successfully";
 
             }
-            catch (AdminException ex)
+            catch (PolicyException ex)
             {
                 responseML.Success = false;
                 responseML.Message = ex.Message;
@@ -126,7 +126,7 @@ namespace E_InsuranceApp.Controllers
                 responseML.Message = "Policy Updated Successfully";
 
             }
-            catch (AdminException ex)
+            catch (PolicyException ex)
             {
                 responseML.Success = false;
                 responseML.Message = ex.Message;

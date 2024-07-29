@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using ModelLayer;
 using RepositoryLayer.Context;
 using RepositoryLayer.Entity;
@@ -26,13 +27,26 @@ namespace RepositoryLayer.Service
         {
             try
             {
-                _context.Policies.Add(policy);
-                await _context.SaveChangesAsync();
+                var parameters = new[] 
+                {
+                    new SqlParameter("@CustomerID", policy.CustomerID),
+                    new SqlParameter("@SchemeID", policy.SchemeID),
+                    new SqlParameter("@PolicyDetails", policy.PolicyDetails),
+                    new SqlParameter("@Premium", policy.Premium),
+                    new SqlParameter("@DateIssued", policy.DateIssued),
+                    new SqlParameter("@MaturityPeriod", policy.MaturityPeriod),
+                    new SqlParameter("@PolicyLapseDate", policy.PolicyLapseDate)
+                };
+
+                await _context.Database.ExecuteSqlRawAsync(
+                            "Exec sp_AddPolicy @CustomerID, @SchemeID, @PolicyDetails, @Premium, @DateIssued, @MaturityPeriod, @PolicyLapseDate",
+                            parameters);
             }
             catch (Exception ex)
             {
                 throw new PolicyException(ex.Message);
             }
+            
         }
 
         public async Task DeletePolicyAsync(int id)

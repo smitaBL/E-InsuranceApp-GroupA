@@ -9,19 +9,11 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = E_InsuranceApp
 build_property.RootNamespace = E_InsuranceApp
-<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\kirti\Vikrant\CDAC\E-Insurance-App\E-InsuranceApp-GroupA\E-InsuranceApp\
-=======
-build_property.ProjectDir = D:\BRIDGELABZ\E-InsuranceApp-GroupA\E-InsuranceApp\
->>>>>>> 3d3e9c8027695dd6abaabf67710b438179176c9d
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-<<<<<<< HEAD
 build_property.MSBuildProjectDirectory = C:\Users\kirti\Vikrant\CDAC\E-Insurance-App\E-InsuranceApp-GroupA\E-InsuranceApp
-=======
-build_property.MSBuildProjectDirectory = D:\BRIDGELABZ\E-InsuranceApp-GroupA\E-InsuranceApp
->>>>>>> 3d3e9c8027695dd6abaabf67710b438179176c9d
 build_property._RazorSourceGeneratorDebug = 

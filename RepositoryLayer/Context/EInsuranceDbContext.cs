@@ -24,6 +24,7 @@ namespace RepositoryLayer.Context
         public DbSet<CommissionEntity> Commissions { get; set; }
         public DbSet<EmployeeSchemeEntity> EmployeeSchemes { get; set; }
         public DbSet<SchemeWithInsurancePlanML> SchemeWithInsurancePlanML { get; set; }
+        public DbSet<PolicyStatusEntity> PolicyStatus { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
