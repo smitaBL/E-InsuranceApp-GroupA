@@ -10,7 +10,7 @@ namespace RepositoryLayer.Interface
 {
     public interface ICommissionRL
     {
-        Task AddCommissionAsync(CommissionML commissionMl);
+        Task AddCommissionAsync(CommissionEntity commissionEntity);
         Task DeleteCommissionAsync(int agentId, int policyId);
         Task<List<CommissionEntity>> GetAllCommissionAsync();
         Task<CommissionEntity> GetByIdCommissionAsync(int agentId, int policyId);

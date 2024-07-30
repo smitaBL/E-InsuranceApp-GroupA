@@ -23,12 +23,13 @@ namespace RepositoryLayer.Service
             this._context = context;
             this.rabbitMQService = rabbitMQService;
         }
-        public async Task AddCommissionAsync(CommissionML commissionMl)
+        public async Task AddCommissionAsync(CommissionEntity commissionEntity)
         {
             try
             {
-                var agent=await _context.InsuranceAgents.FirstOrDefaultAsync(x=>x.AgentID== commissionMl.AgentID);
-                var policy=await _context.Policies.FirstOrDefaultAsync(x=>x.PolicyID== commissionMl.PolicyID);
+               
+                var agent=await _context.InsuranceAgents.FirstOrDefaultAsync(x=>x.AgentID== commissionEntity.AgentID);
+                var policy=await _context.Policies.FirstOrDefaultAsync(x=>x.PolicyID== commissionEntity.PolicyID);
                 if(agent==null)
                 {
                     throw new CommissionException("Invalid agent id");
@@ -37,7 +38,7 @@ namespace RepositoryLayer.Service
                 {
                     throw new CommissionException("Invalid policy id");
                 }
-                await _context.Database.ExecuteSqlRawAsync("EXEC AddCommission @AgentID={0}, @PolicyID={1}, @CommissionAmount={2}", commissionMl.AgentID, commissionMl.PolicyID, commissionMl.CommissionAmount);
+                await _context.Database.ExecuteSqlRawAsync("EXEC AddCommission @AgentID={0}, @PolicyID={1}, @CommissionAmount={2}, @CreatedAt={3}", commissionEntity.AgentID, commissionEntity.PolicyID, commissionEntity.CommissionAmount,commissionEntity.CreatedAt);
             }
             catch (Exception ex)
             {
