@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Interface;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer;
@@ -8,6 +9,7 @@ namespace E_InsuranceApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors]
     public class LoginController : ControllerBase
     {
         private readonly ILoginBL loginBL;

@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Interface;
 using BusinessLayer.Service;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer;
@@ -12,6 +13,7 @@ namespace E_InsuranceApp.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
+    [EnableCors]
     public class PolicyController : ControllerBase
     {
         private readonly IPolicyBL policyBL;

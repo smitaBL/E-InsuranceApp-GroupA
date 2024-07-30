@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Interface;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer;
@@ -9,6 +10,7 @@ namespace E_InsuranceApp.Controllers
 {
     [Route("api/employee")]
     [ApiController]
+    [EnableCors]
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeBL employeeBL;

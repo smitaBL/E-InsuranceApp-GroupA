@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Interface;
 using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer;
@@ -10,6 +11,7 @@ namespace E_InsuranceApp.Controllers
 {
     [Route("api/agent")]
     [ApiController]
+    [EnableCors]
     public class AgentController : ControllerBase
     {
         private readonly IAgentBL agentBL;
