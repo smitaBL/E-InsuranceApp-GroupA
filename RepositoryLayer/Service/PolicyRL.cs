@@ -35,11 +35,11 @@ namespace RepositoryLayer.Service
                     new SqlParameter("@Premium", policy.Premium),
                     new SqlParameter("@DateIssued", policy.DateIssued),
                     new SqlParameter("@MaturityPeriod", policy.MaturityPeriod),
-                    new SqlParameter("@PolicyLapseDate", policy.PolicyLapseDate)
+                    //new SqlParameter("@PolicyLapseDate", policy.PolicyLapseDate)
                 };
 
                 await _context.Database.ExecuteSqlRawAsync(
-                            "Exec sp_AddPolicy @CustomerID, @SchemeID, @PolicyDetails, @Premium, @DateIssued, @MaturityPeriod, @PolicyLapseDate",
+                            "Exec sp_AddPolicy @CustomerID, @SchemeID, @PolicyDetails, @Premium, @DateIssued, @MaturityPeriod",
                             parameters);
             }
             catch (Exception ex)
