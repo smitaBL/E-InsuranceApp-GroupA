@@ -63,6 +63,12 @@ try
     builder.Services.AddScoped<IInsurancePlanBL, InsurancePlanBL>();
     builder.Services.AddScoped<IInsurancePlanRL, InsurancePlanRL>();
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 854fc3a5c5c4f8b0417843b935db9b85d724761a
     //Policy
     builder.Services.AddScoped<IPolicyBL, PolicyBL>();
     builder.Services.AddScoped<IPolicyRL, PolicyRL>();
@@ -70,14 +76,18 @@ try
     builder.Services.AddScoped<ISchemeBL, SchemeBL>();
     builder.Services.AddScoped<ISchemeRL, SchemeRL>();
 
+>>>>>>> Sakshi/CommissionCRUD
     //Policy
     builder.Services.AddScoped<IPolicyBL, PolicyBL>();
     builder.Services.AddScoped<IPolicyRL, PolicyRL>();
 
+<<<<<<< HEAD
     //Policy
     builder.Services.AddScoped<IPolicyBL, PolicyBL>();
     builder.Services.AddScoped<IPolicyRL, PolicyRL>();
 
+=======
+>>>>>>> 854fc3a5c5c4f8b0417843b935db9b85d724761a
     //Scheme
     builder.Services.AddScoped<ISchemeBL, SchemeBL>();
     builder.Services.AddScoped<ISchemeRL, SchemeRL>();
@@ -111,7 +121,7 @@ try
     //Swagger
     builder.Services.AddSwaggerGen(c =>
     {
-        c.SwaggerDoc("v1", new OpenApiInfo { Title = "BookStore API", Version = "v1" });
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "E-Insurance-App API", Version = "v1" });
 
         var securityScheme = new OpenApiSecurityScheme
         {
