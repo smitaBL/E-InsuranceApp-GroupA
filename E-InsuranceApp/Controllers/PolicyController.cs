@@ -48,12 +48,13 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
-                var result = await policyBL.GetAllPoliciesAsync();
+                var customerid = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "Id").Value);
+                var result = await policyBL.GetAllPoliciesAsync(customerid);
                 if (result != null)
                 {
 
                     responseML.Success = true;
-                    responseML.Message = "Policy Fetched Successfully";
+                    responseML.Message = "Policies Fetched Successfully";
                     responseML.Data = result;
 
                 }

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using ModelLayer;
 using RepositoryLayer.Entity;
 using RepositoryLayer.Exceptions;
 using RepositoryLayer.Interface;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace RepositoryLayer.Handlers.Policy
 {
-    public class GetAllPoliciesHandler : IRequestHandler<GetAllPoliciesQuery, List<PolicyEntity>>
+    public class GetAllPoliciesHandler : IRequestHandler<GetAllPoliciesQuery, List<PolicyDTO>>
     {
         private readonly IPolicyRL policyRL;
 
@@ -21,11 +22,11 @@ namespace RepositoryLayer.Handlers.Policy
             this.policyRL = policyRL;
         }
 
-        public async Task<List<PolicyEntity>> Handle(GetAllPoliciesQuery request, CancellationToken cancellationToken)
+        public async Task<List<PolicyDTO>> Handle(GetAllPoliciesQuery request, CancellationToken cancellationToken)
         {
             try
             {
-               return await policyRL.GetAllPoliciesAsync();
+               return await policyRL.GetAllPoliciesAsync(request.customerid);
                 
             }
             catch (Exception ex)
