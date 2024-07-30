@@ -15,6 +15,7 @@ using RepositoryLayer.Utilities;
 using System.Reflection;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using Org.BouncyCastle.Asn1.X509;
 
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
@@ -63,19 +64,6 @@ try
     builder.Services.AddScoped<IInsurancePlanBL, InsurancePlanBL>();
     builder.Services.AddScoped<IInsurancePlanRL, InsurancePlanRL>();
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    //Policy
-    builder.Services.AddScoped<IPolicyBL, PolicyBL>();
-    builder.Services.AddScoped<IPolicyRL, PolicyRL>();
-    //Scheme
-    builder.Services.AddScoped<ISchemeBL, SchemeBL>();
-    builder.Services.AddScoped<ISchemeRL, SchemeRL>();
-=======
-<<<<<<< HEAD
-
->>>>>>> Sakshi/CommissionCRUD
     //Policy
     builder.Services.AddScoped<IPolicyBL, PolicyBL>();
     builder.Services.AddScoped<IPolicyRL, PolicyRL>();
@@ -84,7 +72,6 @@ try
     builder.Services.AddScoped<ISchemeBL, SchemeBL>();
     builder.Services.AddScoped<ISchemeRL, SchemeRL>();
 
->>>>>>> c0a7b73955c278aa9f60e0a37351c41e290477e3
 
     //RabbitMQ
     builder.Services.AddScoped<RabbitMQService>();
@@ -114,7 +101,7 @@ try
     //Swagger
     builder.Services.AddSwaggerGen(c =>
     {
-        c.SwaggerDoc("v1", new OpenApiInfo { Title = "E-Insurance-App API", Version = "v1" });
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "BookStore API", Version = "v1" });
 
         var securityScheme = new OpenApiSecurityScheme
         {
@@ -139,6 +126,18 @@ try
         });
     });
 
+    //CORS
+    const string policyName = "CorsPolicy";
+    builder.Services.AddCors(options =>
+    {
+        options.AddPolicy(name: policyName, builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+    });
+
 
     //Logger
     builder.Logging.ClearProviders();
@@ -152,6 +151,8 @@ try
         app.UseSwagger();
         app.UseSwaggerUI();
     }
+
+    app.UseCors();
 
     app.UseAuthentication();
 

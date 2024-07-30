@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Interface;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit.Tnef;
@@ -10,7 +11,8 @@ namespace E_InsuranceApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    
+    [EnableCors]
+
     public class SchemeController : ControllerBase
     {
         private readonly ISchemeBL schemeBL;

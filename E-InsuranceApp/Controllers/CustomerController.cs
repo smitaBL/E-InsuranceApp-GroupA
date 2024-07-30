@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Interface;
 using BusinessLayer.Service;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer;
@@ -9,6 +10,7 @@ namespace E_InsuranceApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors]
     public class CustomerController : ControllerBase
     {
         private readonly ICustomerBL customerBL;
