@@ -71,6 +71,18 @@ namespace BusinessLayer.Service
             }
         }
 
+        public async Task<List<PolicyDTO>> GetPolicyByNameAsync(string customername)
+        {
+            try
+            {
+                return await mediator.Send(new GetPolicyByNameQuery(customername));
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
         public async Task UpdatePolicyByIdAsync(int id,int customerid, PolicyML model)
         {
             try

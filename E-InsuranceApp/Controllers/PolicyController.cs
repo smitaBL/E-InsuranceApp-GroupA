@@ -96,6 +96,31 @@ namespace E_InsuranceApp.Controllers
             return StatusCode(200, responseML);
         }
 
+        [HttpGet("Policy/GetByName")]
+        public async Task<IActionResult> GetPolicyByNameAsync(string customername)
+        {
+            try
+            {
+                var result = await policyBL.GetPolicyByNameAsync(customername);
+                if (result != null)
+                {
+
+                    responseML.Success = true;
+                    responseML.Message = "Policy Fetched Successfully";
+                    responseML.Data = result;
+
+                }
+            }
+            catch (PolicyException ex)
+            {
+                responseML.Success = false;
+                responseML.Message = ex.Message;
+                return StatusCode(400, responseML);
+            }
+
+            return StatusCode(200, responseML);
+        }
+
         [HttpDelete("Policy/DeleteById")]
         public async Task<IActionResult> DeletePolicyByIdAsync(int id)
         {

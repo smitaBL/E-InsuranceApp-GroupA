@@ -14,5 +14,6 @@ namespace RepositoryLayer.Interface
         Task<CustomerEntity> GetCustomerByIdAsync(int id);
         Task RegisterAsync(CustomerEntity customer);
         Task UpdateCustomerAsync(int id, CustomerEntity customer);
+        Task<List<CustomerEntity>> GetCustomerByAgentIdAsync(int agentid);
     }
 }

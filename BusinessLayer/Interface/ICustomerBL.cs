@@ -15,5 +15,6 @@ namespace BusinessLayer.Interface
         Task<CustomerEntity> GetCustomerByIdAsync(int id);
         Task RegisterAsync(CustomerML model);
         Task UpdateCustomerByIdAsync(int id, CustomerML model);
+        Task<List<CustomerEntity>> GetCustomerByAgentIdAsync(int agentid);
     }
 }

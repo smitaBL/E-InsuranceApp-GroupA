@@ -47,6 +47,19 @@ namespace BusinessLayer.Service
             }
         }
 
+        public async Task<List<CustomerEntity>> GetCustomerByAgentIdAsync(int agentid)
+        {
+            try
+            {
+                var result = await mediator.Send(new GetCustomerByAgentIdQuery(agentid));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public async Task<CustomerEntity> GetCustomerByIdAsync(int id)
         {
             try
