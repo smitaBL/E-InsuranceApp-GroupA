@@ -10,7 +10,7 @@ namespace ModelLayer
     {
         public int AgentID { get; set; }
         public int PolicyID { get; set; }
-        public double CommissionAmount { get; set; }
+        //public double CommissionAmount { get; set; }
 
     }
 }

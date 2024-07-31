@@ -14,6 +14,6 @@ namespace RepositoryLayer.Interface
         Task DeleteCommissionAsync(int agentId, int policyId);
         Task<List<CommissionEntity>> GetAllCommissionAsync();
         Task<CommissionEntity> GetByIdCommissionAsync(int agentId, int policyId);
-        Task UpdateCommissionAsync(CommissionML commissionMl);
+        Task UpdateCommissionAsync(CommissionML commissionMl, float commissionPercentage);
     }
 }

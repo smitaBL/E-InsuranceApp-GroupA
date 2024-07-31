@@ -22,7 +22,7 @@ namespace BusinessLayer.Service
         {
             try
             {
-                await mediator.Send(new AddCommissionCommand(commissionML.AgentID,commissionML.PolicyID,commissionML.CommissionAmount));
+                await mediator.Send(new AddCommissionCommand(commissionML.AgentID,commissionML.PolicyID));
             }
             catch (Exception ex)
             {
@@ -66,11 +66,11 @@ namespace BusinessLayer.Service
             }
         }
 
-        public async Task UpdateCommissionAsync(CommissionML commissionML)
+        public async Task UpdateCommissionAsync(CommissionML commissionML,float commissionPercent)
         {
             try
             {
-                await mediator.Send(new UpdateCommissionCommand(commissionML.AgentID,commissionML.PolicyID,commissionML.CommissionAmount));
+                await mediator.Send(new UpdateCommissionCommand(commissionML.AgentID,commissionML.PolicyID,commissionPercent));
             }
             catch (Exception ex)
             {
