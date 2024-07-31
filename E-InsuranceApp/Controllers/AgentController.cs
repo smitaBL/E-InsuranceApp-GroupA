@@ -79,10 +79,11 @@ namespace E_InsuranceApp.Controllers
             try
             {
                 var result=await agentBL.GetAllAgentAsync();
-                responseML.Success = true;
-                responseML.Data= result;
-                responseML.Message = "All Agents : ";
-                return StatusCode(201, responseML);
+                //responseML.Success = true;
+                //responseML.Data= result;
+                //responseML.Message = "All Agents : ";
+                return StatusCode(200,result);
+                //return StatusCode(201, responseML);
             }
             catch (AgentException ex)
             {

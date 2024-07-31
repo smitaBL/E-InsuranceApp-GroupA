@@ -38,11 +38,11 @@ namespace E_InsuranceApp.Controllers
             }
         }
         [HttpPut("Update/Commission")]
-        public async  Task<IActionResult> UpdateCommissionAsync(CommissionML commissionML)
+        public async  Task<IActionResult> UpdateCommissionAsync(CommissionML commissionML,float commissionPercent)
         {
             try
             {
-                await commissionBL.UpdateCommissionAsync(commissionML);
+                await commissionBL.UpdateCommissionAsync(commissionML,commissionPercent);
                 responseML.Success = true;
                 responseML.Message = $"Commission for agent with Id {commissionML.AgentID} updated successfully";
                 return StatusCode(201, responseML);

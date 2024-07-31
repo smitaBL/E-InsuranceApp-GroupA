@@ -76,6 +76,11 @@ try
     builder.Services.AddScoped<IPolicyBL, PolicyBL>();
     builder.Services.AddScoped<IPolicyRL, PolicyRL>();
 
+    //Policy
+    builder.Services.AddScoped<IPolicyBL, PolicyBL>();
+    builder.Services.AddScoped<IPolicyRL, PolicyRL>();
+
+
     //Scheme
     builder.Services.AddScoped<ISchemeBL, SchemeBL>();
     builder.Services.AddScoped<ISchemeRL, SchemeRL>();
