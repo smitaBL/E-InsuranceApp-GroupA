@@ -66,31 +66,47 @@ namespace RepositoryLayer.Service
             }
         }
 
-        public async Task<List<PolicyEntity>> GetAllPoliciesAsync()
+        public async Task<List<PolicyDTO>> GetAllPoliciesAsync(int customerid)
         {
             try
             {
-                var policy = await _context.Policies.FromSqlRaw("EXEC sp_GetAllPolicies").ToListAsync();
-                if (policy == null)
+                var policies = await _context.Policies
+            .FromSqlRaw("EXEC sp_GetAllPolicies @CustomerID={0}", customerid)
+            .ToListAsync();
+
+                if (policies == null || !policies.Any())
                 {
                     throw new PolicyException("Policy not found");
                 }
-                return policy;
+
+                return policies.Select(p => new PolicyDTO
+                {
+                    PolicyID = p.PolicyID,
+                    CustomerID = p.CustomerID,
+                    SchemeID = p.SchemeID,
+                    PolicyDetails = p.PolicyDetails,
+                    Premium = p.Premium,
+                    DateIssued = p.DateIssued,
+                    MaturityPeriod = p.MaturityPeriod,
+                    PolicyLapseDate = p.PolicyLapseDate,
+                    CreatedAt = p.CreatedAt,
+                    Status = _context.PolicyStatus.Where(ps => ps.PolicyID == p.PolicyID).Select(ps => ps.Status).FirstOrDefault()
+                }).ToList();
             }
             catch (Exception ex)
             {
                 throw new PolicyException(ex.Message);
             }
-           
         }
 
-        public async Task<PolicyEntity> GetPolicyByIdAsync(int id)
+public async Task<PolicyDTO> GetPolicyByIdAsync(int id)
         {
             try
             {
                 var policies = await _context.Policies
-                .FromSqlRaw("EXEC sp_GetPolicyById @Id = {0}", id)
-                .ToListAsync();
+                    .FromSqlRaw("EXEC sp_GetPolicyById @Id = {0}", id)
+                    .ToListAsync();
+                
 
                 var policy = policies.FirstOrDefault();
 
@@ -98,7 +114,19 @@ namespace RepositoryLayer.Service
                 {
                     throw new PolicyException("Policy not found");
                 }
-                return policy;
+                return policies.Select(p => new PolicyDTO
+                {
+                    PolicyID = p.PolicyID,
+                    CustomerID = p.CustomerID,
+                    SchemeID = p.SchemeID,
+                    PolicyDetails = p.PolicyDetails,
+                    Premium = p.Premium,
+                    DateIssued = p.DateIssued,
+                    MaturityPeriod = p.MaturityPeriod,
+                    PolicyLapseDate = p.PolicyLapseDate,
+                    CreatedAt = p.CreatedAt,
+                    Status = _context.PolicyStatus.Where(ps => ps.PolicyID == p.PolicyID).Select(ps => ps.Status).FirstOrDefault()
+                }).FirstOrDefault();
             }
             catch (Exception ex)
             {

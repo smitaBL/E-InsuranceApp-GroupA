@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using ModelLayer;
 using RepositoryLayer.Entity;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RepositoryLayer.Queries.Policy
 {
-    public class GetPolicyByIdQuery : IRequest<PolicyEntity>
+    public class GetPolicyByIdQuery : IRequest<PolicyDTO>
     {
         public int id;
 

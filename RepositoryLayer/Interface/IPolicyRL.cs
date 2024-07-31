@@ -1,4 +1,5 @@
-﻿using RepositoryLayer.Entity;
+﻿using ModelLayer;
+using RepositoryLayer.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,8 @@ namespace RepositoryLayer.Interface
     {
         Task CreatePolicyAsync(PolicyEntity policy);
         Task DeletePolicyAsync(int id);
-        Task<List<PolicyEntity>> GetAllPoliciesAsync();
-        Task<PolicyEntity> GetPolicyByIdAsync(int id);
+        Task<List<PolicyDTO>> GetAllPoliciesAsync(int customerid);
+        Task<PolicyDTO> GetPolicyByIdAsync(int id);
         Task UpdatePolicyAsync(int id, PolicyEntity policy);
     }
 }

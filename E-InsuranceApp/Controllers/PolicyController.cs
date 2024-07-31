@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Interface;
 using BusinessLayer.Service;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer;
@@ -12,6 +13,7 @@ namespace E_InsuranceApp.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
+    [EnableCors]
     public class PolicyController : ControllerBase
     {
         private readonly IPolicyBL policyBL;
@@ -48,12 +50,13 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
-                var result = await policyBL.GetAllPoliciesAsync();
+                var customerid = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "Id").Value);
+                var result = await policyBL.GetAllPoliciesAsync(customerid);
                 if (result != null)
                 {
 
                     responseML.Success = true;
-                    responseML.Message = "Policy Fetched Successfully";
+                    responseML.Message = "Policies Fetched Successfully";
                     responseML.Data = result;
 
                 }
