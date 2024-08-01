@@ -15,10 +15,14 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 <<<<<<< HEAD
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+46f2a112a4cd3b83dd8fdc9e65fa3d6a89d3dacf")]
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+47916a576e461f1d05296cb2006214c3b12f6935")]
 >>>>>>> 440f627ed76bb43b19c5c8eb77498046bc11c04e
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3f3f4872f64ca6fd3cc7225225bd7657d2b6162")]
+>>>>>>> Vikrant/Redis
 [assembly: System.Reflection.AssemblyProductAttribute("E-InsuranceApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("E-InsuranceApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
