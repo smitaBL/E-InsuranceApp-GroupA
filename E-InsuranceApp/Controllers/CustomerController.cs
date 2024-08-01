@@ -88,6 +88,30 @@ namespace E_InsuranceApp.Controllers
 
             return StatusCode(200, responseML);
         }
+
+        [HttpGet("Customer/GetCustomerByAgentId")]
+        public async Task<IActionResult> GetCustomerByAgentIdAsync(int agentid)
+        {
+            try
+            {
+                var result = await customerBL.GetCustomerByAgentIdAsync(agentid);
+                if (result != null)
+                {
+                    responseML.Success = true;
+                    responseML.Message = "Customer Fetched Successfully";
+                    responseML.Data = result;
+                }
+            }
+            catch (CustomerException ex)
+            {
+                responseML.Success = false;
+                responseML.Message = ex.Message;
+                return StatusCode(400, responseML);
+            }
+
+            return StatusCode(200, responseML);
+        }
+
         [HttpDelete("Customer/DeleteCustomerById")]
         public async Task<IActionResult> DeleteCustomerByIdAsync(int id)
         {

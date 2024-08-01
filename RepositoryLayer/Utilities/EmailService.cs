@@ -37,7 +37,7 @@ namespace RepositoryLayer.Utilities
             };
             using var smtp = new SmtpClient();
             smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate("anonymous.u2003@gmail.com", "iilw zyld hjuw bktf");
+            smtp.Authenticate("anonymous.u2003@gmail.com", "gaor phoe etyq llio");
             smtp.Send(email);
             smtp.Disconnect(true);
             return "Mail sent successfully";

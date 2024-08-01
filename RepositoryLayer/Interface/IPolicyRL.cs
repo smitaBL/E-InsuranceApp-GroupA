@@ -15,5 +15,6 @@ namespace RepositoryLayer.Interface
         Task<List<PolicyDTO>> GetAllPoliciesAsync(int customerid);
         Task<PolicyDTO> GetPolicyByIdAsync(int id);
         Task UpdatePolicyAsync(int id, PolicyEntity policy);
+        Task<List<PolicyDTO>> GetPolicyByNameAsync(string customername);
     }
 }

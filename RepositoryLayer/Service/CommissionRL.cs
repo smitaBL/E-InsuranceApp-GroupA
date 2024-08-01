@@ -25,19 +25,23 @@ namespace RepositoryLayer.Service
         {
             try
             {
-               
-                var agent=await _context.InsuranceAgents.FirstOrDefaultAsync(x=>x.AgentID== commissionEntity.AgentID);
-                var policy=await _context.Policies.FirstOrDefaultAsync(x=>x.PolicyID== commissionEntity.PolicyID);
-                if(agent==null)
+                var agent = await _context.InsuranceAgents.FirstOrDefaultAsync(x => x.AgentID == commissionEntity.AgentID);
+                var policy = await _context.Policies.Include(x => x.Scheme).FirstOrDefaultAsync(x => x.PolicyID == commissionEntity.PolicyID);
+
+                if (agent == null)
                 {
                     throw new CommissionException("Invalid agent id");
                 }
+
                 if (policy == null)
                 {
                     throw new CommissionException("Invalid policy id");
                 }
-                commissionEntity.CommissionAmount = 0.05 * policy.Scheme.SchemePrice;
-                await _context.Database.ExecuteSqlRawAsync("EXEC AddCommission @AgentID={0}, @PolicyID={1}, @CommissionAmount={2}, @CreatedAt={3}", commissionEntity.AgentID, commissionEntity.PolicyID, commissionEntity.CommissionAmount,commissionEntity.CreatedAt);
+                await _context.Database.ExecuteSqlRawAsync(
+                    "EXEC AddCommission @AgentID = {0}, @PolicyID = {1}",
+                    commissionEntity.AgentID,
+                    commissionEntity.PolicyID
+                );
             }
             catch (Exception ex)
             {

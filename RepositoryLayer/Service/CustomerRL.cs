@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using ModelLayer;
 using RepositoryLayer.Context;
 using RepositoryLayer.Entity;
@@ -68,6 +69,26 @@ namespace RepositoryLayer.Service
                 }
 
                 return customer;
+            }
+            catch (Exception ex)
+            {
+                throw new CustomerException(ex.Message);
+            }
+        }
+        public async Task<List<CustomerEntity>> GetCustomerByAgentIdAsync(int agentid)
+        {
+            try
+            {
+                var customers = await _context.Customers
+                    .FromSqlRaw("EXEC sp_GetCustomersByAgentId @AgentID = {0}", agentid)
+                    .ToListAsync();
+
+                if (!customers.Any())
+                {
+                    throw new Exception("No customers found for the given agent ID.");
+                }
+
+                return customers;
             }
             catch (Exception ex)
             {
