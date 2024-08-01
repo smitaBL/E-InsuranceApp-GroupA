@@ -17,11 +17,9 @@ namespace RepositoryLayer.Service
     public class CommissionRL : ICommissionRL
     {
         private readonly EInsuranceDbContext _context;
-        private readonly RabbitMQService rabbitMQService;
-        public CommissionRL(EInsuranceDbContext context, RabbitMQService rabbitMQService)
+        public CommissionRL(EInsuranceDbContext context)
         {
             this._context = context;
-            this.rabbitMQService = rabbitMQService;
         }
         public async Task AddCommissionAsync(CommissionEntity commissionEntity)
         {
