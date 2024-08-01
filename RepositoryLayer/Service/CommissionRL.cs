@@ -39,17 +39,11 @@ namespace RepositoryLayer.Service
                 {
                     throw new CommissionException("Invalid policy id");
                 }
-<<<<<<< HEAD
-
                 await _context.Database.ExecuteSqlRawAsync(
                     "EXEC AddCommission @AgentID = {0}, @PolicyID = {1}",
                     commissionEntity.AgentID,
                     commissionEntity.PolicyID
                 );
-=======
-                commissionEntity.CommissionAmount = 0.05 * policy.Scheme.SchemePrice;
-                await _context.Database.ExecuteSqlRawAsync("EXEC AddCommission @AgentID={0}, @PolicyID={1}, @CommissionAmount={2}, @CreatedAt={3}", commissionEntity.AgentID, commissionEntity.PolicyID, commissionEntity.CommissionAmount,commissionEntity.CreatedAt);
->>>>>>> 9a6d127d13d250a0ffffd92b87ec6387cdc978da
             }
             catch (Exception ex)
             {
