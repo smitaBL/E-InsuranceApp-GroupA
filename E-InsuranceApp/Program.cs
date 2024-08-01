@@ -69,12 +69,7 @@ try
     builder.Services.AddScoped<IInsurancePlanBL, InsurancePlanBL>();
     builder.Services.AddScoped<IInsurancePlanRL, InsurancePlanRL>();
 
-<<<<<<< HEAD
     // Policy
-=======
-
-    //Policy
->>>>>>> f45e813e4ee456e9b935739002caeae59ee0c43f
     builder.Services.AddScoped<IPolicyBL, PolicyBL>();
     builder.Services.AddScoped<IPolicyRL, PolicyRL>();
     //Scheme
