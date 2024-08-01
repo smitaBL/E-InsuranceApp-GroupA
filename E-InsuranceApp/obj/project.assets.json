@@ -1132,6 +1132,21 @@
           "bin/placeholder/BusinessLayer.dll": {}
         }
       },
+      "EmailConsumerApp/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3",
+          "RabbitMQ.Client": "6.8.1",
+          "RepositoryLayer": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/EmailConsumerApp.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EmailConsumerApp.dll": {}
+        }
+      },
       "ModelLayer/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -3141,6 +3156,11 @@
       "path": "../BusinessLayer/BusinessLayer.csproj",
       "msbuildProject": "../BusinessLayer/BusinessLayer.csproj"
     },
+    "EmailConsumerApp/1.0.0": {
+      "type": "project",
+      "path": "../EmailConsumerApp/EmailConsumerApp.csproj",
+      "msbuildProject": "../EmailConsumerApp/EmailConsumerApp.csproj"
+    },
     "ModelLayer/1.0.0": {
       "type": "project",
       "path": "../ModelLayer/ModelLayer.csproj",
@@ -3155,6 +3175,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "BusinessLayer >= 1.0.0",
+      "EmailConsumerApp >= 1.0.0",
       "MailKit >= 4.7.1.1",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 6.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.0",
@@ -3198,6 +3219,9 @@
           "projectReferences": {
             "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\BusinessLayer\\BusinessLayer.csproj": {
               "projectPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\BusinessLayer\\BusinessLayer.csproj"
+            },
+            "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\EmailConsumerApp\\EmailConsumerApp.csproj": {
+              "projectPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\EmailConsumerApp\\EmailConsumerApp.csproj"
             },
             "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj": {
               "projectPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj"
@@ -3285,13 +3309,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\E-InsuranceApp\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

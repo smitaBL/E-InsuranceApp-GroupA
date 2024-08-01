@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4eu9wd4kqUgG1Dm4Oy2ED5jbx+L+8jXUE8/No5/+BCzTobetxy3EM/m5lZ35X63HKIzZ3beo5bGVjd/qGghvWA==",
+  "dgSpecHash": "dUgAounRedG3QKizxQrcLHcYYDuSKouvDbuRQYuPpy/KzP39It/i9lrPOoiMsFhDmtAiHLcP+FFytwfTVK0gMw==",
   "success": true,
   "projectFilePath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\E-InsuranceApp\\E-InsuranceApp.csproj",
   "expectedPackageFiles": [
@@ -70,12 +70,5 @@
     "C:\\Users\\kirti\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512",
     "C:\\Users\\kirti\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\E-InsuranceApp\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

@@ -2,7 +2,6 @@ using BusinessLayer.Interface;
 using BusinessLayer.Service;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using E_InsuranceApp.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using NLog;
@@ -15,76 +14,81 @@ using RepositoryLayer.Utilities;
 using System.Reflection;
 using System.Text;
 using Microsoft.OpenApi.Models;
-using Org.BouncyCastle.Asn1.X509;
-
+using E_InsuranceApp.Controllers;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Debug("init main");
 
 try
-{ 
+{
     var builder = WebApplication.CreateBuilder(args);
 
     // Add services to the container.
-    //DBContext
+    // DBContext
     builder.Services.AddDbContext<EInsuranceDbContext>(options =>
     {
-        options.UseSqlServer(builder.Configuration.GetConnectionString("EInsurance"));
+        options.UseSqlServer(builder.Configuration.GetConnectionString("EInsurance"),
+                    sqlServerOptionsAction: sqlOptions =>
+                    {
+                        sqlOptions.EnableRetryOnFailure(
+                            maxRetryCount: 5,
+                            maxRetryDelay: TimeSpan.FromSeconds(10),
+                            errorNumbersToAdd: null);
+                    });
     });
 
-    //Mediator
+    // Mediator
     builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
     builder.Services.AddMediatR(typeof(LoginHandler).Assembly);
 
-    //Agent
+    // Agent
     builder.Services.AddScoped<IAgentBL, AgentBL>();
     builder.Services.AddScoped<IAgentRL, AgentRL>();
 
-    //Commission
+    // Commission
     builder.Services.AddScoped<ICommissionBL, CommissionBL>();
-    builder.Services.AddScoped<ICommissionRL,CommissionRL>();
+    builder.Services.AddScoped<ICommissionRL, CommissionRL>();
 
-    //Employee
+    // Employee
     builder.Services.AddScoped<IEmployeeRL, EmployeeRL>();
     builder.Services.AddScoped<IEmployeeBL, EmployeeBL>();
 
-    //Login
+    // Login
     builder.Services.AddScoped<ILoginBL, LoginBL>();
     builder.Services.AddScoped<ILoginRL, LoginRL>();
 
-    //Admin
+    // Admin
     builder.Services.AddScoped<IAdminBL, AdminBL>();
-    builder.Services.AddScoped<IAdminRL, AdminRL>();    
+    builder.Services.AddScoped<IAdminRL, AdminRL>();
 
-    //Customer
+    // Customer
     builder.Services.AddScoped<ICustomerBL, CustomerBL>();
     builder.Services.AddScoped<ICustomerRL, CustomerRL>();
 
-    //InsurancePlan
+    // InsurancePlan
     builder.Services.AddScoped<IInsurancePlanBL, InsurancePlanBL>();
     builder.Services.AddScoped<IInsurancePlanRL, InsurancePlanRL>();
 
-    //Policy
+    // Policy
     builder.Services.AddScoped<IPolicyBL, PolicyBL>();
     builder.Services.AddScoped<IPolicyRL, PolicyRL>();
 
-    //Scheme
+    // Scheme
     builder.Services.AddScoped<ISchemeBL, SchemeBL>();
     builder.Services.AddScoped<ISchemeRL, SchemeRL>();
 
-
-    //RabbitMQ
+    // RabbitMQ
     builder.Services.AddScoped<RabbitMQService>();
 
     builder.Services.AddControllers();
 
-    //Authentication(JWT)
+    // Authentication (JWT)
     builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                    .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme,options =>
+                    .AddJwtBearer(options =>
                     {
                         options.RequireHttpsMetadata = false;
                         options.SaveToken = true;
-                        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+                        options.TokenValidationParameters = new TokenValidationParameters
                         {
                             ValidateIssuer = true,
                             ValidateAudience = true,
@@ -96,7 +100,6 @@ try
 
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
-    // builder.Services.AddSwaggerGen();
 
     //Swagger
     builder.Services.AddSwaggerGen(c =>
@@ -126,7 +129,8 @@ try
         });
     });
 
-    //CORS
+
+    //cors
     const string policyName = "CorsPolicy";
     builder.Services.AddCors(options =>
     {
@@ -138,21 +142,32 @@ try
         });
     });
 
-
-    //Logger
+    // Logger
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();
+
+    // IIS Configuration
+    builder.Services.Configure<IISServerOptions>(options =>
+    {
+        options.AllowSynchronousIO = true;
+    });
 
     var app = builder.Build();
 
     // Configure the HTTP request pipeline.
-    if (app.Environment.IsDevelopment())
+    if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     {
         app.UseSwagger();
-        app.UseSwaggerUI();
+        app.UseSwaggerUI(c =>
+        {
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            c.RoutePrefix = string.Empty; // To serve Swagger UI at the app's root
+        });
     }
 
     app.UseCors();
+
+    app.UseHttpsRedirection();
 
     app.UseAuthentication();
 
@@ -164,7 +179,7 @@ try
 }
 catch (Exception ex)
 {
-    logger.Error(ex);
+    logger.Error(ex, "Stopped program because of exception");
     throw;
 }
 finally
