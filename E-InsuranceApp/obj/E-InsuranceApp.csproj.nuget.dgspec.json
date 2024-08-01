@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\E-InsuranceApp\\E-InsuranceApp.csproj": {}
   },
   "projects": {
@@ -13,30 +12,9 @@
         "projectPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\BusinessLayer\\BusinessLayer.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\BusinessLayer\\obj\\",
-=======
-    "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\E-InsuranceApp\\E-InsuranceApp.csproj": {}
-  },
-  "projects": {
-    "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\BusinessLayer\\BusinessLayer.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\BusinessLayer\\BusinessLayer.csproj",
-        "projectName": "BusinessLayer",
-        "projectPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\BusinessLayer\\BusinessLayer.csproj",
-        "packagesPath": "C:\\Users\\renuk\\.nuget\\packages\\",
-        "outputPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\BusinessLayer\\obj\\",
->>>>>>> 440f627ed76bb43b19c5c8eb77498046bc11c04e
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-<<<<<<< HEAD
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-          "C:\\Users\\renuk\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
->>>>>>> 440f627ed76bb43b19c5c8eb77498046bc11c04e
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,26 +22,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-<<<<<<< HEAD
               "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj": {
                 "projectPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj"
               },
               "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj": {
                 "projectPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj"
-=======
-              "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj": {
-                "projectPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj"
-              },
-              "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj": {
-                "projectPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj"
->>>>>>> 440f627ed76bb43b19c5c8eb77498046bc11c04e
               }
             }
           }
@@ -102,7 +71,6 @@
         }
       }
     },
-<<<<<<< HEAD
     "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\E-InsuranceApp\\E-InsuranceApp.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -111,27 +79,9 @@
         "projectPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\E-InsuranceApp\\E-InsuranceApp.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\E-InsuranceApp\\obj\\",
-=======
-    "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\E-InsuranceApp\\E-InsuranceApp.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\E-InsuranceApp\\E-InsuranceApp.csproj",
-        "projectName": "E-InsuranceApp",
-        "projectPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\E-InsuranceApp\\E-InsuranceApp.csproj",
-        "packagesPath": "C:\\Users\\renuk\\.nuget\\packages\\",
-        "outputPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\E-InsuranceApp\\obj\\",
->>>>>>> 440f627ed76bb43b19c5c8eb77498046bc11c04e
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-<<<<<<< HEAD
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-          "C:\\Users\\renuk\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
->>>>>>> 440f627ed76bb43b19c5c8eb77498046bc11c04e
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -139,14 +89,12 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-<<<<<<< HEAD
               "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\BusinessLayer\\BusinessLayer.csproj": {
                 "projectPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\BusinessLayer\\BusinessLayer.csproj"
               },
@@ -158,19 +106,6 @@
               },
               "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj": {
                 "projectPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj"
-=======
-              "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\BusinessLayer\\BusinessLayer.csproj": {
-                "projectPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\BusinessLayer\\BusinessLayer.csproj"
-              },
-              "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\EmailConsumerApp\\EmailConsumerApp.csproj": {
-                "projectPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\EmailConsumerApp\\EmailConsumerApp.csproj"
-              },
-              "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj": {
-                "projectPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj"
-              },
-              "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj": {
-                "projectPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj"
->>>>>>> 440f627ed76bb43b19c5c8eb77498046bc11c04e
               }
             }
           }
@@ -258,7 +193,6 @@
         }
       }
     },
-<<<<<<< HEAD
     "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\EmailConsumerApp\\EmailConsumerApp.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -267,27 +201,9 @@
         "projectPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\EmailConsumerApp\\EmailConsumerApp.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\EmailConsumerApp\\obj\\",
-=======
-    "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\EmailConsumerApp\\EmailConsumerApp.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\EmailConsumerApp\\EmailConsumerApp.csproj",
-        "projectName": "EmailConsumerApp",
-        "projectPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\EmailConsumerApp\\EmailConsumerApp.csproj",
-        "packagesPath": "C:\\Users\\renuk\\.nuget\\packages\\",
-        "outputPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\EmailConsumerApp\\obj\\",
->>>>>>> 440f627ed76bb43b19c5c8eb77498046bc11c04e
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-<<<<<<< HEAD
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-          "C:\\Users\\renuk\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
->>>>>>> 440f627ed76bb43b19c5c8eb77498046bc11c04e
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -295,20 +211,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-<<<<<<< HEAD
               "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj": {
                 "projectPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj"
-=======
-              "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj": {
-                "projectPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj"
->>>>>>> 440f627ed76bb43b19c5c8eb77498046bc11c04e
               }
             }
           }
@@ -357,7 +267,6 @@
         }
       }
     },
-<<<<<<< HEAD
     "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -366,27 +275,9 @@
         "projectPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\obj\\",
-=======
-    "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
-        "projectName": "ModelLayer",
-        "projectPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj",
-        "packagesPath": "C:\\Users\\renuk\\.nuget\\packages\\",
-        "outputPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\ModelLayer\\obj\\",
->>>>>>> 440f627ed76bb43b19c5c8eb77498046bc11c04e
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-<<<<<<< HEAD
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-          "C:\\Users\\renuk\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
->>>>>>> 440f627ed76bb43b19c5c8eb77498046bc11c04e
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -394,7 +285,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -437,7 +327,6 @@
         }
       }
     },
-<<<<<<< HEAD
     "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -446,27 +335,9 @@
         "projectPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\RepositoryLayer\\obj\\",
-=======
-    "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj",
-        "projectName": "RepositoryLayer",
-        "projectPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj",
-        "packagesPath": "C:\\Users\\renuk\\.nuget\\packages\\",
-        "outputPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\RepositoryLayer\\obj\\",
->>>>>>> 440f627ed76bb43b19c5c8eb77498046bc11c04e
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-<<<<<<< HEAD
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-          "C:\\Users\\renuk\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
->>>>>>> 440f627ed76bb43b19c5c8eb77498046bc11c04e
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -474,20 +345,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-<<<<<<< HEAD
               "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj": {
                 "projectPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj"
-=======
-              "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj": {
-                "projectPath": "D:\\BRIDGELABZ\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj"
->>>>>>> 440f627ed76bb43b19c5c8eb77498046bc11c04e
               }
             }
           }

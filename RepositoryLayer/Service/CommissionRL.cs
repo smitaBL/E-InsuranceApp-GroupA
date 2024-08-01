@@ -18,11 +18,6 @@ namespace RepositoryLayer.Service
     public class CommissionRL : ICommissionRL
     {
         private readonly EInsuranceDbContext _context;
-<<<<<<< HEAD
-        public CommissionRL(EInsuranceDbContext context)
-        {
-            this._context = context;
-=======
         private readonly RabbitMQService _rabbitMQService;
         private readonly ILogger<CommissionRL> _logger;
 
@@ -31,7 +26,6 @@ namespace RepositoryLayer.Service
             _context = context;
             _rabbitMQService = rabbitMQService;
             _logger = logger;
->>>>>>> 440f627ed76bb43b19c5c8eb77498046bc11c04e
         }
 
         public async Task AddCommissionAsync(CommissionEntity commissionEntity)
