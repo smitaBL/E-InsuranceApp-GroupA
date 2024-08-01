@@ -1,14 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using ModelLayer;
 using RepositoryLayer.Context;
 using RepositoryLayer.Exceptions;
 using RepositoryLayer.Interface;
 using RepositoryLayer.Utilities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace RepositoryLayer.Service
@@ -17,96 +15,121 @@ namespace RepositoryLayer.Service
     {
         private readonly EInsuranceDbContext _context;
         private readonly IConfiguration _configuration;
-        string decryptPassword;
-        public LoginRL(EInsuranceDbContext context, IConfiguration configuration)
+        private readonly ILogger<LoginRL> _logger;
+        private string _decryptPassword;
+
+        public LoginRL(EInsuranceDbContext context, IConfiguration configuration, ILogger<LoginRL> logger)
         {
             _context = context;
             _configuration = configuration;
+            _logger = logger;
         }
 
         public async Task<string> LoginAsync(LoginML model)
         {
-            switch (model.Role)
+            try
             {
-                case "Admin":
-                    var admin = await _context.Admins.FirstOrDefaultAsync(a => a.Email.ToLower() == model.Email.ToLower());
+                _logger.LogInformation("Attempting login for role: {Role} with email: {Email}", model.Role, model.Email);
 
-                    if (admin == null)
-                    {
-                        throw new LoginException("Invalid Email/Password");
-                    }
+                switch (model.Role)
+                {
+                    case "Admin":
+                        var admin = await _context.Admins.FirstOrDefaultAsync(a => a.Email.ToLower() == model.Email.ToLower());
 
-                    decryptPassword = PasswordHashing.Decrypt(admin.Password);
+                        if (admin == null)
+                        {
+                            _logger.LogWarning("Invalid email/password for admin with email: {Email}", model.Email);
+                            throw new LoginException("Invalid Email/Password");
+                        }
 
-                    if (decryptPassword.Equals(model.Password))
-                    {
-                        return JwtTokenGenerator.GenerateToken(_context, _configuration, admin,admin.AdminID, model.Role); //token;
-                    }
-                    else
-                    {
-                        throw new LoginException("Invalid Email/Password");
-                    }
-                    break;
+                        _decryptPassword = PasswordHashing.Decrypt(admin.Password);
 
-                case "Employee":
-                    var employee = await _context.Employees.FirstOrDefaultAsync(a => a.Email.ToLower() == model.Email.ToLower());
-                    if (employee == null)
-                    {
-                        throw new LoginException("Invalid Email/Password");
-                    }
+                        if (_decryptPassword.Equals(model.Password))
+                        {
+                            _logger.LogInformation("Admin login successful for email: {Email}", model.Email);
+                            return JwtTokenGenerator.GenerateToken(_context, _configuration, admin, admin.AdminID, model.Role);
+                        }
+                        else
+                        {
+                            _logger.LogWarning("Invalid password for admin with email: {Email}", model.Email);
+                            throw new LoginException("Invalid Email/Password");
+                        }
 
-                    decryptPassword = PasswordHashing.Decrypt(employee.Password);
+                    case "Employee":
+                        var employee = await _context.Employees.FirstOrDefaultAsync(a => a.Email.ToLower() == model.Email.ToLower());
 
-                    if (decryptPassword.Equals(model.Password))
-                    {
-                        return JwtTokenGenerator.GenerateToken(_context, _configuration, employee,employee.EmployeeID, model.Role); //token;
-                    }
-                    else
-                    {
-                        throw new LoginException("Invalid Email/Password");
-                    }
-                    break;
+                        if (employee == null)
+                        {
+                            _logger.LogWarning("Invalid email/password for employee with email: {Email}", model.Email);
+                            throw new LoginException("Invalid Email/Password");
+                        }
 
-                case "Agent":
-                    var agent = await _context.InsuranceAgents.FirstOrDefaultAsync(a => a.Email.ToLower() == model.Email.ToLower());
-                    if (agent == null)
-                    {
-                        throw new LoginException("Invalid Email/Password");
-                    }
+                        _decryptPassword = PasswordHashing.Decrypt(employee.Password);
 
-                    decryptPassword = PasswordHashing.Decrypt(agent.Password);
+                        if (_decryptPassword.Equals(model.Password))
+                        {
+                            _logger.LogInformation("Employee login successful for email: {Email}", model.Email);
+                            return JwtTokenGenerator.GenerateToken(_context, _configuration, employee, employee.EmployeeID, model.Role);
+                        }
+                        else
+                        {
+                            _logger.LogWarning("Invalid password for employee with email: {Email}", model.Email);
+                            throw new LoginException("Invalid Email/Password");
+                        }
 
-                    if (decryptPassword.Equals(model.Password))
-                    {
-                        return JwtTokenGenerator.GenerateToken(_context, _configuration, agent,agent.AgentID, model.Role); //token;
-                    }
-                    else
-                    {
-                        throw new LoginException("Invalid Email/Password");
-                    }
-                    break;
+                    case "Agent":
+                        var agent = await _context.InsuranceAgents.FirstOrDefaultAsync(a => a.Email.ToLower() == model.Email.ToLower());
 
-                case "Customer":
-                    var customer = await _context.Customers.FirstOrDefaultAsync(a => a.Email.ToLower() == model.Email.ToLower());
-                    if (customer == null)
-                    {
-                        throw new LoginException("Invalid Email/Password");
-                    }
+                        if (agent == null)
+                        {
+                            _logger.LogWarning("Invalid email/password for agent with email: {Email}", model.Email);
+                            throw new LoginException("Invalid Email/Password");
+                        }
 
-                    decryptPassword = PasswordHashing.Decrypt(customer.Password);
+                        _decryptPassword = PasswordHashing.Decrypt(agent.Password);
 
-                    if (decryptPassword.Equals(model.Password))
-                    {
-                        return JwtTokenGenerator.GenerateToken(_context, _configuration, customer,customer.CustomerID, model.Role); //token;
-                    }
-                    else
-                    {
-                        throw new LoginException("Invalid Email/Password");
-                    }
-                    break;
+                        if (_decryptPassword.Equals(model.Password))
+                        {
+                            _logger.LogInformation("Agent login successful for email: {Email}", model.Email);
+                            return JwtTokenGenerator.GenerateToken(_context, _configuration, agent, agent.AgentID, model.Role);
+                        }
+                        else
+                        {
+                            _logger.LogWarning("Invalid password for agent with email: {Email}", model.Email);
+                            throw new LoginException("Invalid Email/Password");
+                        }
 
-                default:
-                    throw new LoginException("Invalid Login Credentials");
+                    case "Customer":
+                        var customer = await _context.Customers.FirstOrDefaultAsync(a => a.Email.ToLower() == model.Email.ToLower());
+
+                        if (customer == null)
+                        {
+                            _logger.LogWarning("Invalid email/password for customer with email: {Email}", model.Email);
+                            throw new LoginException("Invalid Email/Password");
+                        }
+
+                        _decryptPassword = PasswordHashing.Decrypt(customer.Password);
+
+                        if (_decryptPassword.Equals(model.Password))
+                        {
+                            _logger.LogInformation("Customer login successful for email: {Email}", model.Email);
+                            return JwtTokenGenerator.GenerateToken(_context, _configuration, customer, customer.CustomerID, model.Role);
+                        }
+                        else
+                        {
+                            _logger.LogWarning("Invalid password for customer with email: {Email}", model.Email);
+                            throw new LoginException("Invalid Email/Password");
+                        }
+
+                    default:
+                        _logger.LogWarning("Invalid role provided for login: {Role}", model.Role);
+                        throw new LoginException("Invalid Login Credentials");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception occurred during login for email: {Email}", model.Email);
+                throw new LoginException(ex.Message);
             }
         }
     }
