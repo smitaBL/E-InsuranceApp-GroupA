@@ -271,3 +271,9 @@ C:\Users\kirti\Vikrant\CDAC\E-Insurance-App\E-InsuranceApp-GroupA\E-InsuranceApp
 C:\Users\kirti\Vikrant\CDAC\E-Insurance-App\E-InsuranceApp-GroupA\E-InsuranceApp\bin\Debug\net6.0\EmailConsumerApp.exe
 C:\Users\kirti\Vikrant\CDAC\E-Insurance-App\E-InsuranceApp-GroupA\E-InsuranceApp\bin\Debug\net6.0\EmailConsumerApp.dll
 C:\Users\kirti\Vikrant\CDAC\E-Insurance-App\E-InsuranceApp-GroupA\E-InsuranceApp\bin\Debug\net6.0\EmailConsumerApp.pdb
+D:\BRIDGELABZ\E-InsuranceApp-GroupA\E-InsuranceApp\bin\Debug\net6.0\EmailConsumerApp.deps.json
+D:\BRIDGELABZ\E-InsuranceApp-GroupA\E-InsuranceApp\bin\Debug\net6.0\EmailConsumerApp.runtimeconfig.json
+D:\BRIDGELABZ\E-InsuranceApp-GroupA\E-InsuranceApp\bin\Debug\net6.0\EmailConsumerApp.exe
+D:\BRIDGELABZ\E-InsuranceApp-GroupA\E-InsuranceApp\bin\Debug\net6.0\web.config
+D:\BRIDGELABZ\E-InsuranceApp-GroupA\E-InsuranceApp\bin\Debug\net6.0\EmailConsumerApp.dll
+D:\BRIDGELABZ\E-InsuranceApp-GroupA\E-InsuranceApp\bin\Debug\net6.0\EmailConsumerApp.pdb
