@@ -154,6 +154,13 @@ try
         });
     });
 
+    //Redis
+    builder.Services.AddStackExchangeRedisCache(options =>
+    {
+        options.Configuration = builder.Configuration["RedisCacheOptions:Configuration"];
+        options.InstanceName = builder.Configuration["RedisCacheOptions:InstanceName"];
+    });
+
     // Logger
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();
