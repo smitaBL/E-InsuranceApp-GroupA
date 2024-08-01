@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using ModelLayer;
-using RepositoryLayer.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace RepositoryLayer.Queries.Policy
 {
-    public class GetAllPoliciesQuery : IRequest<List<PolicyDTO>>
+    public class GetPolicyByNameQuery : IRequest<List<PolicyDTO>>
     {
-        public int customerid;
+        public string customername;
 
-        public GetAllPoliciesQuery(int customerid)
+        public GetPolicyByNameQuery(string customername)
         {
-            this.customerid = customerid;
+            this.customername = customername;
         }
     }
 }

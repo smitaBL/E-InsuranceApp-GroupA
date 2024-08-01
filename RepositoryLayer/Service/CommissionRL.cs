@@ -27,18 +27,23 @@ namespace RepositoryLayer.Service
         {
             try
             {
-               
-                var agent=await _context.InsuranceAgents.FirstOrDefaultAsync(x=>x.AgentID== commissionEntity.AgentID);
-                var policy=await _context.Policies.FirstOrDefaultAsync(x=>x.PolicyID== commissionEntity.PolicyID);
-                if(agent==null)
+                var agent = await _context.InsuranceAgents.FirstOrDefaultAsync(x => x.AgentID == commissionEntity.AgentID);
+                var policy = await _context.Policies.Include(x => x.Scheme).FirstOrDefaultAsync(x => x.PolicyID == commissionEntity.PolicyID);
+
+                if (agent == null)
                 {
                     throw new CommissionException("Invalid agent id");
                 }
+
                 if (policy == null)
                 {
                     throw new CommissionException("Invalid policy id");
                 }
-                await _context.Database.ExecuteSqlRawAsync("EXEC AddCommission @AgentID={0}, @PolicyID={1}, @CommissionAmount={2}, @CreatedAt={3}", commissionEntity.AgentID, commissionEntity.PolicyID, commissionEntity.CommissionAmount,commissionEntity.CreatedAt);
+                await _context.Database.ExecuteSqlRawAsync(
+                    "EXEC AddCommission @AgentID = {0}, @PolicyID = {1}",
+                    commissionEntity.AgentID,
+                    commissionEntity.PolicyID
+                );
             }
             catch (Exception ex)
             {
@@ -92,14 +97,26 @@ namespace RepositoryLayer.Service
             }
         }
 
-        public async Task UpdateCommissionAsync(CommissionML commissionMl)
+        public async Task UpdateCommissionAsync(CommissionML commissionML, float commissionPercentage)
         {
             try
             {
-                await _context.Database.ExecuteSqlRawAsync(
-                    "EXEC UpdateCommission @AgentID={0}, @PolicyID={1}, @CommissionAmount={2}",
-                    commissionMl.AgentID, commissionMl.PolicyID, commissionMl.CommissionAmount);
+                var agent = await _context.InsuranceAgents.FirstOrDefaultAsync(x => x.AgentID == commissionML.AgentID);
+                if (agent == null)
+                {
+                    throw new CommissionException("Invalid agent id");
+                }
 
+                var policy = await _context.Policies.FirstOrDefaultAsync(x => x.PolicyID == commissionML.PolicyID);
+                if (policy == null)
+                {
+                    throw new CommissionException("Invalid policy id");
+                }
+
+                await _context.Database.ExecuteSqlRawAsync(
+                    "EXEC UpdateCommission @AgentID={0}, @PolicyID={1}, @CommissionPercentage={2}",
+                    commissionML.AgentID, commissionML.PolicyID, commissionPercentage
+                );
             }
             catch (Exception ex)
             {

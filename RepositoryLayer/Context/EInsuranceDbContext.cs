@@ -25,6 +25,7 @@ namespace RepositoryLayer.Context
         public DbSet<EmployeeSchemeEntity> EmployeeSchemes { get; set; }
         public DbSet<SchemeWithInsurancePlanML> SchemeWithInsurancePlanML { get; set; }
         public DbSet<PolicyStatusEntity> PolicyStatus { get; set; }
+        public DbSet<PolicyDTO> PolicyDTOs { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -68,6 +69,12 @@ namespace RepositoryLayer.Context
                 .WithMany(s => s.EmployeeSchemes)
                 .HasForeignKey(es => es.SchemeID)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<PolicyDTO>(entity =>
+            {
+                entity.HasNoKey();
+                entity.ToView(null);    
+            });
 
             modelBuilder.Entity<SchemeWithInsurancePlanML>().HasNoKey();
         }

@@ -14,6 +14,6 @@ namespace BusinessLayer.Interface
         Task DeleteCommissionAsync(int agentId, int policyId);
         Task<List<CommissionEntity>> GetAllCommissionAsync();
         Task<CommissionEntity> GetByIdCommissionAsync(int agentId, int policyId);
-        Task UpdateCommissionAsync(CommissionML commissionML);
+        Task UpdateCommissionAsync(CommissionML commissionML,float commissionPercent);
     }
 }

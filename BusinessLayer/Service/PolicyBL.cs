@@ -47,11 +47,11 @@ namespace BusinessLayer.Service
             }
         }
 
-        public async Task<List<PolicyEntity>> GetAllPoliciesAsync()
+        public async Task<List<PolicyDTO>> GetAllPoliciesAsync(int customerid)
         {
             try
             {
-                return await mediator.Send(new GetAllPoliciesQuery());
+                return await mediator.Send(new GetAllPoliciesQuery(customerid));
             }
             catch
             {
@@ -59,11 +59,23 @@ namespace BusinessLayer.Service
             }
         }
 
-        public async Task<PolicyEntity> GetPolicyByIdAsync(int id)
+        public async Task<PolicyDTO> GetPolicyByIdAsync(int policyid)
         {
             try
             {
-                return await mediator.Send(new GetPolicyByIdQuery(id));
+                return await mediator.Send(new GetPolicyByIdQuery(policyid));
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<List<PolicyDTO>> GetPolicyByNameAsync(string customername)
+        {
+            try
+            {
+                return await mediator.Send(new GetPolicyByNameQuery(customername));
             }
             catch
             {

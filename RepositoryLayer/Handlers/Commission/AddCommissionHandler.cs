@@ -29,7 +29,7 @@ namespace RepositoryLayer.Handlers.Commission
                 {
                     AgentID = request.agentID,
                     PolicyID = request.policyID,
-                    CommissionAmount = request.commissionAmount,
+                    //CommissionAmount = request.commissionAmount,
                 };
                 await commissionRL.AddCommissionAsync(commissionMl);
                 return Unit.Value;

@@ -6,13 +6,16 @@ namespace BusinessLayer.Service
     {
         public int agentID;
         public int policyID;
-        public double commissionAmount;
+        public float commissionPercentage;
 
-        public UpdateCommissionCommand(int agentID, int policyID, double commissionAmount)
+        //public double commissionAmount;
+
+        public UpdateCommissionCommand(int agentID, int policyID, float commissionPercentage)
         {
             this.agentID = agentID;
             this.policyID = policyID;
-            this.commissionAmount = commissionAmount;
+            this.commissionPercentage = commissionPercentage;
+            //this.commissionAmount = commissionAmount;
         }
     }
 }

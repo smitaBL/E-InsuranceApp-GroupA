@@ -12,8 +12,9 @@ namespace BusinessLayer.Interface
     {
         Task AddPolicyAsync(int customerid,PolicyML model);
         Task DeletePolicyByIdAsync(int id);
-        Task<List<PolicyEntity>> GetAllPoliciesAsync();
-        Task<PolicyEntity> GetPolicyByIdAsync(int id);
+        Task<List<PolicyDTO>> GetAllPoliciesAsync(int customerid);
+        Task<PolicyDTO> GetPolicyByIdAsync(int id);
+        Task<List<PolicyDTO>> GetPolicyByNameAsync(string customername);
         Task UpdatePolicyByIdAsync(int id,int customerid, PolicyML model);
     }
 }

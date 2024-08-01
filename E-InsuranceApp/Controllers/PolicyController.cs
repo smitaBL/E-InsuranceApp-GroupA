@@ -50,12 +50,13 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
-                var result = await policyBL.GetAllPoliciesAsync();
+                var customerid = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == "Id").Value);
+                var result = await policyBL.GetAllPoliciesAsync(customerid);
                 if (result != null)
                 {
 
                     responseML.Success = true;
-                    responseML.Message = "Policy Fetched Successfully";
+                    responseML.Message = "Policies Fetched Successfully";
                     responseML.Data = result;
 
                 }
@@ -76,6 +77,31 @@ namespace E_InsuranceApp.Controllers
             try
             {
                 var result = await policyBL.GetPolicyByIdAsync(id);
+                if (result != null)
+                {
+
+                    responseML.Success = true;
+                    responseML.Message = "Policy Fetched Successfully";
+                    responseML.Data = result;
+
+                }
+            }
+            catch (PolicyException ex)
+            {
+                responseML.Success = false;
+                responseML.Message = ex.Message;
+                return StatusCode(400, responseML);
+            }
+
+            return StatusCode(200, responseML);
+        }
+
+        [HttpGet("Policy/GetByName")]
+        public async Task<IActionResult> GetPolicyByNameAsync(string customername)
+        {
+            try
+            {
+                var result = await policyBL.GetPolicyByNameAsync(customername);
                 if (result != null)
                 {
 

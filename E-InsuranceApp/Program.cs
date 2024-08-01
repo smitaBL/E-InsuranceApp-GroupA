@@ -69,9 +69,26 @@ try
     builder.Services.AddScoped<IInsurancePlanBL, InsurancePlanBL>();
     builder.Services.AddScoped<IInsurancePlanRL, InsurancePlanRL>();
 
+<<<<<<< HEAD
     // Policy
+=======
+
+    //Policy
+>>>>>>> f45e813e4ee456e9b935739002caeae59ee0c43f
     builder.Services.AddScoped<IPolicyBL, PolicyBL>();
     builder.Services.AddScoped<IPolicyRL, PolicyRL>();
+    //Scheme
+    builder.Services.AddScoped<ISchemeBL, SchemeBL>();
+    builder.Services.AddScoped<ISchemeRL, SchemeRL>();
+
+    //Policy
+    builder.Services.AddScoped<IPolicyBL, PolicyBL>();
+    builder.Services.AddScoped<IPolicyRL, PolicyRL>();
+
+    //Policy
+    builder.Services.AddScoped<IPolicyBL, PolicyBL>();
+    builder.Services.AddScoped<IPolicyRL, PolicyRL>();
+
 
     // Scheme
     builder.Services.AddScoped<ISchemeBL, SchemeBL>();
@@ -104,7 +121,7 @@ try
     //Swagger
     builder.Services.AddSwaggerGen(c =>
     {
-        c.SwaggerDoc("v1", new OpenApiInfo { Title = "BookStore API", Version = "v1" });
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "EInsuranceApp API", Version = "v1" });
 
         var securityScheme = new OpenApiSecurityScheme
         {

@@ -66,31 +66,34 @@ namespace RepositoryLayer.Service
             }
         }
 
-        public async Task<List<PolicyEntity>> GetAllPoliciesAsync()
+        public async Task<List<PolicyDTO>> GetAllPoliciesAsync(int customerid)
         {
             try
             {
-                var policy = await _context.Policies.FromSqlRaw("EXEC sp_GetAllPolicies").ToListAsync();
-                if (policy == null)
+                var policies = await _context.PolicyDTOs
+                    .FromSqlRaw("EXEC sp_GetAllPolicies @CustomerID={0}", customerid)
+                    .ToListAsync();
+
+                if (policies == null || !policies.Any())
                 {
                     throw new PolicyException("Policy not found");
                 }
-                return policy;
+
+                return policies;
             }
             catch (Exception ex)
             {
                 throw new PolicyException(ex.Message);
             }
-           
         }
 
-        public async Task<PolicyEntity> GetPolicyByIdAsync(int id)
+        public async Task<PolicyDTO> GetPolicyByIdAsync(int id)
         {
             try
             {
-                var policies = await _context.Policies
-                .FromSqlRaw("EXEC sp_GetPolicyById @Id = {0}", id)
-                .ToListAsync();
+                var policies = await _context.PolicyDTOs
+                    .FromSqlRaw("EXEC sp_GetPolicyById @Id={0}", id)
+                    .ToListAsync();
 
                 var policy = policies.FirstOrDefault();
 
@@ -98,11 +101,33 @@ namespace RepositoryLayer.Service
                 {
                     throw new PolicyException("Policy not found");
                 }
+
                 return policy;
             }
             catch (Exception ex)
             {
                 throw new PolicyException(ex.Message);
+            }
+        }
+
+        public async Task<List<PolicyDTO>> GetPolicyByNameAsync(string customername)
+        {
+            try
+            {
+                var policies = await _context.PolicyDTOs
+                    .FromSqlRaw("EXEC sp_GetPoliciesByCustomerName @CustomerName={0}", customername)
+                    .ToListAsync();
+
+                if (policies == null || !policies.Any())
+                {
+                    throw new PolicyException("Policy not found");
+                }
+
+                return policies;
+            }
+            catch (Exception ex)
+            {
+                throw new PolicyException($"Error retrieving policies: {ex.Message}");
             }
         }
 
