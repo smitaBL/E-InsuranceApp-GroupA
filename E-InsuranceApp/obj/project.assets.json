@@ -1132,6 +1132,21 @@
           "bin/placeholder/BusinessLayer.dll": {}
         }
       },
+      "EmailConsumerApp/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3",
+          "RabbitMQ.Client": "6.8.1",
+          "RepositoryLayer": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/EmailConsumerApp.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EmailConsumerApp.dll": {}
+        }
+      },
       "ModelLayer/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -3141,6 +3156,11 @@
       "path": "../BusinessLayer/BusinessLayer.csproj",
       "msbuildProject": "../BusinessLayer/BusinessLayer.csproj"
     },
+    "EmailConsumerApp/1.0.0": {
+      "type": "project",
+      "path": "../EmailConsumerApp/EmailConsumerApp.csproj",
+      "msbuildProject": "../EmailConsumerApp/EmailConsumerApp.csproj"
+    },
     "ModelLayer/1.0.0": {
       "type": "project",
       "path": "../ModelLayer/ModelLayer.csproj",
@@ -3155,6 +3175,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "BusinessLayer >= 1.0.0",
+      "EmailConsumerApp >= 1.0.0",
       "MailKit >= 4.7.1.1",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 6.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.0",
@@ -3170,11 +3191,16 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\DELL\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\kirti\\.nuget\\packages\\": {}
+>>>>>>> c3f3f4872f64ca6fd3cc7225225bd7657d2b6162
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\E-InsuranceApp\\E-InsuranceApp.csproj",
       "projectName": "E-InsuranceApp",
       "projectPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\E-InsuranceApp\\E-InsuranceApp.csproj",
@@ -3183,6 +3209,16 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+      "projectUniqueName": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\E-InsuranceApp\\E-InsuranceApp.csproj",
+      "projectName": "E-InsuranceApp",
+      "projectPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\E-InsuranceApp\\E-InsuranceApp.csproj",
+      "packagesPath": "C:\\Users\\kirti\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\E-InsuranceApp\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\kirti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> c3f3f4872f64ca6fd3cc7225225bd7657d2b6162
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3196,6 +3232,7 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+<<<<<<< HEAD
             "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\BusinessLayer\\BusinessLayer.csproj": {
               "projectPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\BusinessLayer\\BusinessLayer.csproj"
             },
@@ -3204,6 +3241,19 @@
             },
             "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj": {
               "projectPath": "C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj"
+=======
+            "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\BusinessLayer\\BusinessLayer.csproj": {
+              "projectPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\BusinessLayer\\BusinessLayer.csproj"
+            },
+            "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\EmailConsumerApp\\EmailConsumerApp.csproj": {
+              "projectPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\EmailConsumerApp\\EmailConsumerApp.csproj"
+            },
+            "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj": {
+              "projectPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\ModelLayer\\ModelLayer.csproj"
+            },
+            "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj": {
+              "projectPath": "C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\RepositoryLayer\\RepositoryLayer.csproj"
+>>>>>>> c3f3f4872f64ca6fd3cc7225225bd7657d2b6162
             }
           }
         }
@@ -3296,7 +3346,11 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
+<<<<<<< HEAD
       "message": "Problem reading the cache file C:\\Users\\DELL\\OneDrive - HERE Global B.V\\Desktop\\CDAC\\BridgeLabz_Assignment1\\E-InsuranceApp-GroupA\\E-InsuranceApp\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+=======
+      "message": "Problem reading the cache file C:\\Users\\kirti\\Vikrant\\CDAC\\E-Insurance-App\\E-InsuranceApp-GroupA\\E-InsuranceApp\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+>>>>>>> c3f3f4872f64ca6fd3cc7225225bd7657d2b6162
     }
   ]
 }
