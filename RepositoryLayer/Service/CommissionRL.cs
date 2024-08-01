@@ -19,33 +19,17 @@ namespace RepositoryLayer.Service
     public class CommissionRL : ICommissionRL
     {
         private readonly EInsuranceDbContext _context;
-<<<<<<< HEAD
-<<<<<<< HEAD
-        public CommissionRL(EInsuranceDbContext context)
-        {
-            this._context = context;
-=======
         private readonly RabbitMQService _rabbitMQService;
         private readonly ILogger<CommissionRL> _logger;
+        private readonly IDistributedCache _cache;
+        string cacheKey = "Get_All_Commission";
 
-        public CommissionRL(EInsuranceDbContext context, RabbitMQService rabbitMQService, ILogger<CommissionRL> logger)
+        public CommissionRL(EInsuranceDbContext context, RabbitMQService rabbitMQService, ILogger<CommissionRL> logger, IDistributedCache cache)
         {
             _context = context;
             _rabbitMQService = rabbitMQService;
             _logger = logger;
->>>>>>> 440f627ed76bb43b19c5c8eb77498046bc11c04e
-=======
-        private readonly RabbitMQService rabbitMQService;
-        private readonly IDistributedCache _cache;
-
-        string cacheKey = "Get_All_Commission";
-
-        public CommissionRL(EInsuranceDbContext context, RabbitMQService rabbitMQService, IDistributedCache cache)
-        {
-            this._context = context;
-            this.rabbitMQService = rabbitMQService;
-            _cache = cache;
->>>>>>> Vikrant/Redis
+            _cache = cache;     
         }
 
         public async Task AddCommissionAsync(CommissionEntity commissionEntity)
@@ -112,13 +96,8 @@ namespace RepositoryLayer.Service
         {
             try
             {
-<<<<<<< HEAD
                 _logger.LogInformation("Fetching all commissions");
 
-                var commissions = await _context.Commissions.FromSqlRaw("EXEC GetAllCommissions").ToListAsync();
-
-                _logger.LogInformation("Fetched all commissions successfully");
-=======
                 var cachedCommission = RedisCacheHelper.GetFromCache<List<CommissionEntity>>(cacheKey, _cache);
                 List<CommissionEntity> commissions;
 
@@ -128,6 +107,7 @@ namespace RepositoryLayer.Service
 
                     if (commissions.Count != 0)
                     {
+                        _logger.LogInformation("Fetched all commissions successfully");
                         return commissions;
                     }
                 }
@@ -135,11 +115,12 @@ namespace RepositoryLayer.Service
                 commissions = await _context.Commissions.FromSqlRaw("EXEC GetAllCommissions").ToListAsync();
                 if (commissions.Count == 0)
                 {
+                    _logger.LogError("No Commission Found");
                     throw new CommissionException("No Commission Found");
                 }
 
                 RedisCacheHelper.SetToCache(cacheKey, _cache, commissions, 30, 15);
->>>>>>> Vikrant/Redis
+
                 return commissions;
             }
             catch (Exception ex)
@@ -155,9 +136,7 @@ namespace RepositoryLayer.Service
         {
             try
             {
-<<<<<<< HEAD
                 _logger.LogInformation("Fetching commission for AgentID: {AgentID}, PolicyID: {PolicyID}", agentId, policyId);
-=======
                 string cachedKey = "Get_Commission_By_Id";
                 var cachedCommission = RedisCacheHelper.GetFromCache<CommissionEntity>(cachedKey, _cache);
 
@@ -167,14 +146,12 @@ namespace RepositoryLayer.Service
                 {
                     return cachedCommission;
                 }
->>>>>>> Vikrant/Redis
 
                 var result = await _context.Commissions
                     .FromSqlRaw("EXEC GetCommissionById @AgentID={0}, @PolicyID={1}", agentId, policyId)
                     .ToListAsync();
 
-<<<<<<< HEAD
-                var commission = result.FirstOrDefault();
+                commission = result.FirstOrDefault();
 
                 if (commission == null)
                 {
@@ -183,17 +160,8 @@ namespace RepositoryLayer.Service
                 }
 
                 _logger.LogInformation("Fetched commission for AgentID: {AgentID}, PolicyID: {PolicyID} successfully", agentId, policyId);
-=======
-                commission =  result.FirstOrDefault();
-
-                if (commission == null)
-                {
-                    throw new CommissionException("No Commission Found");
-                }
 
                 RedisCacheHelper.SetToCache(cachedKey, _cache, commission, 30, 15);
-
->>>>>>> Vikrant/Redis
                 return commission;
             }
             catch (Exception ex)

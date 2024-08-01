@@ -28,6 +28,7 @@ namespace E_InsuranceApp.Controllers
         }
 
         [HttpPost("Policy/AddPolicy")]
+        [Authorize(Roles = "Customer")]
         public async Task<IActionResult> AddPolicyAsync(PolicyML model)
         {
             try
@@ -153,7 +154,8 @@ namespace E_InsuranceApp.Controllers
         }
 
         [HttpPut("Policy/UpdateById")]
-        public async Task<IActionResult> UpdateAdminByIdAsync(int id, PolicyML model)
+        [Authorize(Roles = "Customer")]
+        public async Task<IActionResult> UpdatePolicyByIdAsync(int id, PolicyML model)
         {
             try
             {

@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Interface;
 using BusinessLayer.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,12 +12,13 @@ namespace E_InsuranceApp.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors]
+    [Authorize]
     public class CustomerController : ControllerBase
     {
         private readonly ICustomerBL customerBL;
         private readonly ResponseML responseML;
-        private readonly ILogger _logger;
-        public CustomerController(ICustomerBL customerBL, ILogger logger)
+        private readonly ILogger<CustomerController> _logger;
+        public CustomerController(ICustomerBL customerBL, ILogger<CustomerController> logger)
         {
             this.customerBL = customerBL;
             this.responseML = new ResponseML();
@@ -24,6 +26,7 @@ namespace E_InsuranceApp.Controllers
         }
 
         [HttpPost("Register/Customer")]
+        [Authorize(Roles ="Customer")]
         public async Task<IActionResult> RegisterCustomerAsync(CustomerML model)
         {
             try
@@ -153,7 +156,9 @@ namespace E_InsuranceApp.Controllers
 
             return StatusCode(200, responseML);
         }
+
         [HttpPut("Customer/UpdateCustomerById")]
+        [Authorize(Roles = "Customer")]
         public async Task<IActionResult> UpdateCustomerByIdAsync(int id, CustomerML model)
         {
             try

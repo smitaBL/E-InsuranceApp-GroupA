@@ -5,12 +5,14 @@ using Microsoft.AspNetCore.Mvc;
 using ModelLayer;
 using RepositoryLayer.Exceptions;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace E_InsuranceApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors]
+    [Authorize(Roles ="Admin,Employee")]
     public class InsurancePlanController : ControllerBase
     {
         private readonly IInsurancePlanBL insurancePlanBL;

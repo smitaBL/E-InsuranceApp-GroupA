@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Interface;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,19 +13,22 @@ namespace E_InsuranceApp.Controllers
     [Route("api/agent")]
     [ApiController]
     [EnableCors]
+    [Authorize(Roles ="Admin, Agent")]
     public class AgentController : ControllerBase
     {
         private readonly IAgentBL agentBL;
         private readonly ResponseML responseML;
-        private readonly ILogger<LoginController> _logger;
+        private readonly ILogger<AgentController> _logger;
 
-        public AgentController(IAgentBL agentBL, ILogger<LoginController> logger)
+        public AgentController(IAgentBL agentBL, ILogger<AgentController> logger)
         {
             this.agentBL = agentBL;
             this.responseML = new ResponseML();
             _logger = logger;
         }
+
         [HttpPost("Register/Agent")]
+        [AllowAnonymous]
         public async Task<IActionResult> CreateAgentAsync(InsuranceAgentML insuranceAgentML)
         {
             try
@@ -43,6 +47,7 @@ namespace E_InsuranceApp.Controllers
                 return StatusCode(400,responseML);
             }
         }
+
         [HttpPut("Update/Agent")]
         public async Task<IActionResult> UpdateAgentAsync(int id, InsuranceAgentML insuranceAgentML)
         {
@@ -62,6 +67,7 @@ namespace E_InsuranceApp.Controllers
                 return StatusCode(400, responseML);
             }
         }
+
         [HttpGet("GetById/Agent")]
         public async Task<IActionResult> GetByIdAgentAsync(int id)
         {
@@ -84,6 +90,7 @@ namespace E_InsuranceApp.Controllers
                 return StatusCode(400, responseML);
             }
         }
+
         [HttpGet("GetAll/Agent")]
         public async Task<IActionResult> GetAllAgentAsync()
         {
@@ -104,6 +111,7 @@ namespace E_InsuranceApp.Controllers
                 return StatusCode(400, responseML);
             }
         }
+
         [HttpDelete("Delete/Agent")]
         public async Task<IActionResult> DeleteAgentAsync(int id)
         {

@@ -11,13 +11,14 @@ namespace E_InsuranceApp.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors]
+    [Authorize(Roles ="Admin")]
     public class AdminController : ControllerBase
     {
         private readonly IAdminBL adminBL;
         private readonly ResponseML responseML;
-        private readonly ILogger<LoginController> _logger;
+        private readonly ILogger<AdminController> _logger;
 
-        public AdminController(IAdminBL adminBL, ILogger<LoginController> logger)
+        public AdminController(IAdminBL adminBL, ILogger<AdminController> logger)
         {
             this.adminBL = adminBL;
             responseML = new ResponseML();
@@ -25,6 +26,7 @@ namespace E_InsuranceApp.Controllers
         }
 
         [HttpPost("Register/Admin")]
+        [AllowAnonymous]
         public async Task<IActionResult> RegisterAdminAsync(AdminML model)
         {
             try

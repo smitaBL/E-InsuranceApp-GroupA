@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,17 +12,20 @@ namespace E_InsuranceApp.Controllers
     [Route("api/employee")]
     [ApiController]
     [EnableCors]
+    [Authorize(Roles ="Admin,Employee")]
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeBL employeeBL;
         private readonly ResponseML responseML;
-        private readonly ILogger _logger;
-        public EmployeeController( IEmployeeBL employeeBL, ILogger logger)
+        private readonly ILogger<EmployeeController> _logger;
+
+        public EmployeeController( IEmployeeBL employeeBL, ILogger<EmployeeController> logger)
         {
             this.employeeBL = employeeBL;
             this.responseML = new ResponseML();
             _logger = logger;
         }
+
         [HttpPost("Register/Employee")]
         public async Task<IActionResult> CreateEmployeeAsync(EmployeeML employeeEntity)
         {
@@ -43,6 +47,7 @@ namespace E_InsuranceApp.Controllers
                 return StatusCode(400, responseML);
             }
         }
+
         [HttpPut("Update/Employee")]
         public async Task<IActionResult> UpdateEmployeeAsync(int id,EmployeeML employeeEntity)
         {
@@ -64,6 +69,7 @@ namespace E_InsuranceApp.Controllers
                 return StatusCode(400, responseML);
             }
         }
+
         [HttpGet("GetAll/Employee")]
         public async Task<IActionResult> GetAllEmployeeAsync()
         {
@@ -86,6 +92,7 @@ namespace E_InsuranceApp.Controllers
                 return StatusCode(400, responseML);
             }
         }
+
         [HttpGet("GetById/Employee")]
         public async Task<IActionResult> GetByIdEmployeeAsync(int id)
         {
@@ -108,6 +115,7 @@ namespace E_InsuranceApp.Controllers
                 return StatusCode(400, responseML);
             }
         }
+
         [HttpDelete("Delete/Employee")]
         public async Task<IActionResult> DeleteEmployeeAsync(int id)
         {
