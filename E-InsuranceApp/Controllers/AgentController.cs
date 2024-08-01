@@ -16,16 +16,20 @@ namespace E_InsuranceApp.Controllers
     {
         private readonly IAgentBL agentBL;
         private readonly ResponseML responseML;
-        public AgentController(IAgentBL agentBL)
+        private readonly ILogger<LoginController> _logger;
+
+        public AgentController(IAgentBL agentBL, ILogger<LoginController> logger)
         {
             this.agentBL = agentBL;
             this.responseML = new ResponseML();
+            _logger = logger;
         }
         [HttpPost("Register/Agent")]
         public async Task<IActionResult> CreateAgentAsync(InsuranceAgentML insuranceAgentML)
         {
             try
             {
+                _logger.LogInformation("Creating a new agent.");
                 await agentBL.CreateAgentAsync(insuranceAgentML);
                 responseML.Success = true;
                 responseML.Message = "Agent created successfully";
@@ -33,6 +37,7 @@ namespace E_InsuranceApp.Controllers
             }
             catch (AgentException ex)
             {
+                _logger.LogError($"Error creating agent: {ex.Message} for agent {insuranceAgentML.Email}");
                 responseML.Success = false;
                 responseML.Message = ex.Message;        
                 return StatusCode(400,responseML);
@@ -43,6 +48,7 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
+                _logger.LogInformation($"Updating agent with Id {id}.");
                 await agentBL.UpdateAgentAsync(id,insuranceAgentML);
                 responseML.Success = true;
                 responseML.Message = $"Agent with Id {id} updated successfully";
@@ -50,6 +56,7 @@ namespace E_InsuranceApp.Controllers
             }
             catch (AgentException ex)
             {
+                _logger.LogError($"Error updating agent with Id {id}: {ex.Message}");
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);
@@ -60,7 +67,9 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
-                var result=await agentBL.GetByIdAgentAsync(id);
+                _logger.LogInformation($"Fetching details for agent with Id {id}.");
+
+                var result =await agentBL.GetByIdAgentAsync(id);
                 responseML.Success = true;
                 responseML.Data= result;
                 responseML.Message = $"Agent with Id {id} : ";
@@ -68,6 +77,8 @@ namespace E_InsuranceApp.Controllers
             }
             catch (AgentException ex)
             {
+                _logger.LogError($"Error fetching details for agent with Id {id}: {ex.Message}");
+
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);
@@ -78,15 +89,16 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
-                var result=await agentBL.GetAllAgentAsync();
-                //responseML.Success = true;
-                //responseML.Data= result;
-                //responseML.Message = "All Agents : ";
+                _logger.LogInformation("Fetching all agents.");
+
+                var result =await agentBL.GetAllAgentAsync();
+                
                 return StatusCode(200,result);
-                //return StatusCode(201, responseML);
             }
             catch (AgentException ex)
             {
+                _logger.LogError($"Error fetching all agents: {ex.Message}");
+
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);
@@ -97,6 +109,8 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
+                _logger.LogInformation($"Deleting agent with Id {id}.");
+
                 await agentBL.DeleteAgentAsync(id);
                 responseML.Success = true;
                 responseML.Message = $"Agent with Id {id} deleted successfully";
@@ -104,6 +118,8 @@ namespace E_InsuranceApp.Controllers
             }
             catch (AgentException ex)
             {
+                _logger.LogError($"Error deleting agent with Id {id}: {ex.Message}");
+
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);

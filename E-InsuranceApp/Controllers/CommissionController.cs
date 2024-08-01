@@ -15,16 +15,20 @@ namespace E_InsuranceApp.Controllers
     {
         private readonly ICommissionBL commissionBL;
         private readonly ResponseML responseML;
-        public CommissionController(ICommissionBL commissionBL)
+        private readonly ILogger _logger;
+        public CommissionController(ICommissionBL commissionBL, ILogger logger)
         {
             this.commissionBL = commissionBL;
             this.responseML = new ResponseML();
+            this._logger = logger;
         }
         [HttpPost("Add/Commission")]
         public async Task<IActionResult> AddCommissionAsync(CommissionML commissionML)
         {
             try
             {
+                _logger.LogInformation("Attempting to add a commission for agent with Id {AgentID}.", commissionML.AgentID);
+
                 await commissionBL.AddCommissionAsync(commissionML);
                 responseML.Success = true;
                 responseML.Message = $"Commission for agent with Id {commissionML.AgentID} added successfully";
@@ -32,6 +36,8 @@ namespace E_InsuranceApp.Controllers
             }
             catch (CommissionException ex)
             {
+                _logger.LogError(ex, "Error occurred while adding commission for agent with Id {AgentID}.", commissionML.AgentID);
+
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);
@@ -42,6 +48,8 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
+                _logger.LogInformation("Attempting to update commission for agent with Id {AgentID}.", commissionML.AgentID);
+
                 await commissionBL.UpdateCommissionAsync(commissionML,commissionPercent);
                 responseML.Success = true;
                 responseML.Message = $"Commission for agent with Id {commissionML.AgentID} updated successfully";
@@ -49,6 +57,8 @@ namespace E_InsuranceApp.Controllers
             }
             catch (CommissionException ex)
             {
+                _logger.LogError(ex, "Error occurred while updating commission for agent with Id {AgentID}.", commissionML.AgentID);
+
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);
@@ -59,6 +69,8 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
+                _logger.LogInformation("Attempting to delete commission for agent with Id {AgentID} and policy with Id {PolicyID}.", agentId, policyId);
+
                 await commissionBL.DeleteCommissionAsync(agentId, policyId);
                 responseML.Success = true;
                 responseML.Message = $"Commission for agent with Id {agentId} deleted successfully";
@@ -66,6 +78,9 @@ namespace E_InsuranceApp.Controllers
             }
             catch (CommissionException ex)
             {
+                _logger.LogError(ex, "Error occurred while deleting commission for agent with Id {AgentID} and policy with Id {PolicyID}.", agentId, policyId);
+
+
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);
@@ -76,7 +91,9 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
-                var result=await commissionBL.GetAllCommissionAsync();
+                _logger.LogInformation("Attempting to fetch all commissions.");
+
+                var result =await commissionBL.GetAllCommissionAsync();
                 responseML.Success = true;
                 responseML.Message = "All commissions : ";
                 responseML.Data=result;
@@ -84,6 +101,8 @@ namespace E_InsuranceApp.Controllers
             }
             catch (CommissionException ex)
             {
+                _logger.LogError(ex, "Error occurred while fetching all commissions.");
+
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);
@@ -94,7 +113,9 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
-                var result=await commissionBL.GetByIdCommissionAsync(agentId, policyId);
+                _logger.LogInformation("Attempting to fetch commission for agent with Id {AgentID} and policy with Id {PolicyID}.", agentId, policyId);
+
+                var result =await commissionBL.GetByIdCommissionAsync(agentId, policyId);
                 responseML.Success = true;
                 responseML.Message = $"Commission for agent with Id {agentId} fetched successfully";
                 responseML.Data= result;
@@ -102,6 +123,8 @@ namespace E_InsuranceApp.Controllers
             }
             catch (CommissionException ex)
             {
+                _logger.LogError(ex, "Error occurred while fetching commission for agent with Id {AgentID} and policy with Id {PolicyID}.", agentId, policyId);
+
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);

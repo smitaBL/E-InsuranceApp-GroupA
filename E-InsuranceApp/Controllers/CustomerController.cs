@@ -15,10 +15,12 @@ namespace E_InsuranceApp.Controllers
     {
         private readonly ICustomerBL customerBL;
         private readonly ResponseML responseML;
-        public CustomerController(ICustomerBL customerBL)
+        private readonly ILogger _logger;
+        public CustomerController(ICustomerBL customerBL, ILogger logger)
         {
             this.customerBL = customerBL;
             this.responseML = new ResponseML();
+            this._logger = logger;
         }
 
         [HttpPost("Register/Customer")]
@@ -26,6 +28,8 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
+                _logger.LogInformation($"Attempting to register a new customer {model.Email}");
+
                 await customerBL.RegisterAsync(model);
                 
                     responseML.Success = true;
@@ -34,6 +38,8 @@ namespace E_InsuranceApp.Controllers
             }
             catch (CustomerException ex)
             {
+                _logger.LogError(ex, "Error occurred while registering a new customer.");
+
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);
@@ -47,6 +53,8 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
+                _logger.LogInformation("Attempting to fetch all customers.");
+
                 var result = await customerBL.GetAllCustomerAsync();
                 if (result != null)
                 {
@@ -58,6 +66,8 @@ namespace E_InsuranceApp.Controllers
             }
             catch (CustomerException ex)
             {
+                _logger.LogError(ex, "Error occurred while fetching all customers.");
+
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);
@@ -71,6 +81,8 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
+                _logger.LogInformation("Attempting to fetch customer with Id {CustomerId}.", id);
+
                 var result = await customerBL.GetCustomerByIdAsync(id);
                 if (result != null)
                 {
@@ -81,6 +93,8 @@ namespace E_InsuranceApp.Controllers
             }
             catch (CustomerException ex)
             {
+                _logger.LogError(ex, "Error occurred while fetching customer with Id {CustomerId}.", id);
+
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);
@@ -94,6 +108,8 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
+                _logger.LogInformation("Attempting to fetch customers for agent with Id {AgentId}.", agentid);
+
                 var result = await customerBL.GetCustomerByAgentIdAsync(agentid);
                 if (result != null)
                 {
@@ -104,6 +120,8 @@ namespace E_InsuranceApp.Controllers
             }
             catch (CustomerException ex)
             {
+                _logger.LogError(ex, "Error occurred while fetching customers for agent with Id {AgentId}.", agentid);
+
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);
@@ -117,6 +135,8 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
+                _logger.LogInformation("Attempting to delete customer with Id {CustomerId}.", id);
+
                 await customerBL.DeleteCustomerByIdAsync(id);
                 responseML.Success = true;
                 responseML.Message = "Customer Deleted Successfully";
@@ -124,6 +144,8 @@ namespace E_InsuranceApp.Controllers
             }
             catch (CustomerException ex)
             {
+                _logger.LogError(ex, "Error occurred while deleting customer with Id {CustomerId}.", id);
+
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);
@@ -136,6 +158,8 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
+                _logger.LogInformation("Attempting to update customer with Id {CustomerId}.", id);
+
                 await customerBL.UpdateCustomerByIdAsync(id,model);
                 responseML.Success = true;
                 responseML.Message = "Customer Updated Successfully";
@@ -143,6 +167,8 @@ namespace E_InsuranceApp.Controllers
             }
             catch (CustomerException ex)
             {
+                _logger.LogError(ex, "Error occurred while updating customer with Id {CustomerId}.", id);
+
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);

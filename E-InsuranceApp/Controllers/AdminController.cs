@@ -15,11 +15,13 @@ namespace E_InsuranceApp.Controllers
     {
         private readonly IAdminBL adminBL;
         private readonly ResponseML responseML;
+        private readonly ILogger<LoginController> _logger;
 
-        public AdminController(IAdminBL adminBL)
+        public AdminController(IAdminBL adminBL, ILogger<LoginController> logger)
         {
             this.adminBL = adminBL;
             responseML = new ResponseML();
+            _logger = logger;
         }
 
         [HttpPost("Register/Admin")]
@@ -27,6 +29,7 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
+                _logger.LogInformation($"Register attempt for user {model.Email}");
                 await adminBL.RegisterAsync(model);
                 
                     responseML.Success = true;
@@ -34,6 +37,8 @@ namespace E_InsuranceApp.Controllers
             }
             catch (AdminException ex)
             {
+                _logger.LogError(ex, "An error occurred while registering in the user {Email}.", model.Email);
+
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);
@@ -47,6 +52,7 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
+                _logger.LogInformation("Fetching attempt for all admins");
                 var result = await adminBL.GetAllAdminAsync();
                 if (result != null)
                 {
@@ -59,6 +65,7 @@ namespace E_InsuranceApp.Controllers
             }
             catch (AdminException ex)
             {
+                _logger.LogError(ex, "An error occurred while fetching all admins.");
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);
@@ -72,6 +79,7 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
+                _logger.LogInformation($"Fetching attempt for admin with id {id}");
                 var result = await adminBL.GetAdminByIdAsync(id);
                 if (result != null)
                 {
@@ -84,6 +92,7 @@ namespace E_InsuranceApp.Controllers
             }
             catch (AdminException ex)
             {
+                _logger.LogError(ex, $"An error occurred while fetching admin with id {id}");
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);
@@ -97,6 +106,7 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
+                _logger.LogInformation($"Delete attempt for admin with id {id}");
                 await adminBL.DeleteAdminByIdAsync(id);
 
                     responseML.Success = true;
@@ -105,6 +115,7 @@ namespace E_InsuranceApp.Controllers
             }
             catch (AdminException ex)
             {
+                _logger.LogError(ex, $"An error occurred while deleting admin with id {id}");
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);
@@ -118,6 +129,7 @@ namespace E_InsuranceApp.Controllers
         {
             try
             {
+                _logger.LogInformation($"Update attempt for admin with id {id}");
                 await adminBL.UpdateAdminByIdAsync(id,model);
 
                 responseML.Success = true;
@@ -126,6 +138,7 @@ namespace E_InsuranceApp.Controllers
             }
             catch (AdminException ex)
             {
+                _logger.LogError(ex, $"An error occurred while updating admin with id {id}");
                 responseML.Success = false;
                 responseML.Message = ex.Message;
                 return StatusCode(400, responseML);
