@@ -13,6 +13,7 @@ namespace E_InsuranceApp.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors]
+    [Authorize]
     public class SchemeController : ControllerBase
     {
         private readonly ISchemeBL schemeBL;

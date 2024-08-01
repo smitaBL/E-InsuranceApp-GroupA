@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
 using ModelLayer;
 using RepositoryLayer.Context;
 using RepositoryLayer.Entity;
@@ -20,12 +21,18 @@ namespace RepositoryLayer.Service
         private readonly EInsuranceDbContext _context;
         private readonly RabbitMQService _rabbitMQService;
         private readonly ILogger<CommissionRL> _logger;
+        private readonly IDistributedCache _cache;
+        string cacheKey = "Get_All_Commission";
 
-        public CommissionRL(EInsuranceDbContext context, RabbitMQService rabbitMQService, ILogger<CommissionRL> logger)
+        public CommissionRL(EInsuranceDbContext context, RabbitMQService rabbitMQService, ILogger<CommissionRL> logger, IDistributedCache cache)
         {
             _context = context;
             _rabbitMQService = rabbitMQService;
             _logger = logger;
+<<<<<<< HEAD
+=======
+            _cache = cache;     
+>>>>>>> d9ccbfb559b167991fa8fecb1c76a1e963b70aae
         }
 
         public async Task AddCommissionAsync(CommissionEntity commissionEntity)
@@ -94,9 +101,29 @@ namespace RepositoryLayer.Service
             {
                 _logger.LogInformation("Fetching all commissions");
 
-                var commissions = await _context.Commissions.FromSqlRaw("EXEC GetAllCommissions").ToListAsync();
+                var cachedCommission = RedisCacheHelper.GetFromCache<List<CommissionEntity>>(cacheKey, _cache);
+                List<CommissionEntity> commissions;
 
-                _logger.LogInformation("Fetched all commissions successfully");
+                if (cachedCommission != null)
+                {
+                    commissions = cachedCommission.ToList();
+
+                    if (commissions.Count != 0)
+                    {
+                        _logger.LogInformation("Fetched all commissions successfully");
+                        return commissions;
+                    }
+                }
+
+                commissions = await _context.Commissions.FromSqlRaw("EXEC GetAllCommissions").ToListAsync();
+                if (commissions.Count == 0)
+                {
+                    _logger.LogError("No Commission Found");
+                    throw new CommissionException("No Commission Found");
+                }
+
+                RedisCacheHelper.SetToCache(cacheKey, _cache, commissions, 30, 15);
+
                 return commissions;
             }
             catch (Exception ex)
@@ -106,17 +133,28 @@ namespace RepositoryLayer.Service
             }
         }
 
+      
+
         public async Task<CommissionEntity> GetByIdCommissionAsync(int agentId, int policyId)
         {
             try
             {
                 _logger.LogInformation("Fetching commission for AgentID: {AgentID}, PolicyID: {PolicyID}", agentId, policyId);
+                string cachedKey = "Get_Commission_By_Id";
+                var cachedCommission = RedisCacheHelper.GetFromCache<CommissionEntity>(cachedKey, _cache);
+
+                CommissionEntity commission;
+
+                if(cachedCommission != null)
+                {
+                    return cachedCommission;
+                }
 
                 var result = await _context.Commissions
                     .FromSqlRaw("EXEC GetCommissionById @AgentID={0}, @PolicyID={1}", agentId, policyId)
                     .ToListAsync();
 
-                var commission = result.FirstOrDefault();
+                commission = result.FirstOrDefault();
 
                 if (commission == null)
                 {
@@ -125,6 +163,8 @@ namespace RepositoryLayer.Service
                 }
 
                 _logger.LogInformation("Fetched commission for AgentID: {AgentID}, PolicyID: {PolicyID} successfully", agentId, policyId);
+
+                RedisCacheHelper.SetToCache(cachedKey, _cache, commission, 30, 15);
                 return commission;
             }
             catch (Exception ex)

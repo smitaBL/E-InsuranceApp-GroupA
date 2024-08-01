@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Interface;
 using BusinessLayer.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,17 +12,20 @@ namespace E_InsuranceApp.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors]
+    [Authorize(Roles ="Admin, Employee, Agent")]
     public class CommissionController : ControllerBase
     {
         private readonly ICommissionBL commissionBL;
         private readonly ResponseML responseML;
-        private readonly ILogger _logger;
-        public CommissionController(ICommissionBL commissionBL, ILogger logger)
+        private readonly ILogger<CommissionController> _logger;
+
+        public CommissionController(ICommissionBL commissionBL, ILogger<CommissionController> logger)
         {
             this.commissionBL = commissionBL;
             this.responseML = new ResponseML();
             this._logger = logger;
         }
+
         [HttpPost("Add/Commission")]
         public async Task<IActionResult> AddCommissionAsync(CommissionML commissionML)
         {
@@ -43,6 +47,7 @@ namespace E_InsuranceApp.Controllers
                 return StatusCode(400, responseML);
             }
         }
+
         [HttpPut("Update/Commission")]
         public async  Task<IActionResult> UpdateCommissionAsync(CommissionML commissionML,float commissionPercent)
         {
@@ -64,6 +69,7 @@ namespace E_InsuranceApp.Controllers
                 return StatusCode(400, responseML);
             }
         }
+
         [HttpDelete("Delete/Commission")]
         public async Task<IActionResult> DeleteCommissionAsync(int agentId, int policyId)
         {
@@ -86,6 +92,7 @@ namespace E_InsuranceApp.Controllers
                 return StatusCode(400, responseML);
             }
         }
+
         [HttpGet("GetAll/Commission")]
         public async Task<IActionResult> GetAllCommissionAsync()
         {
@@ -108,6 +115,7 @@ namespace E_InsuranceApp.Controllers
                 return StatusCode(400, responseML);
             }
         }
+
         [HttpGet("GetById/Commission")]
         public async Task<IActionResult> GetByIdCommissionAsync(int agentId, int policyId)
         {
