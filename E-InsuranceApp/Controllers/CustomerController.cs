@@ -26,7 +26,7 @@ namespace E_InsuranceApp.Controllers
         }
 
         [HttpPost("Register/Customer")]
-        [Authorize(Roles ="Customer")]
+        [AllowAnonymous]
         public async Task<IActionResult> RegisterCustomerAsync(CustomerML model)
         {
             try

@@ -27,6 +27,7 @@ namespace E_InsuranceApp.Controllers
         }
 
         [HttpPost("Register/Employee")]
+        [AllowAnonymous]
         public async Task<IActionResult> CreateEmployeeAsync(EmployeeML employeeEntity)
         {
             try

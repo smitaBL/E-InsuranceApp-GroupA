@@ -28,7 +28,7 @@ namespace E_InsuranceApp.Controllers
         }
 
         [HttpPost("CreateScheme")]
-        [Authorize(Roles = "Employee")]
+        [Authorize(Roles ="Employee")]
         public async Task<ActionResult> CreateSchemeAsync(SchemeML model)
         {
             try
@@ -54,6 +54,7 @@ namespace E_InsuranceApp.Controllers
         }
 
         [HttpPut("UpdateSchemeById/{Id}")]
+        [Authorize(Roles = "Employee")]
         public async Task<ActionResult> UpdateSchemeAsync(int Id, SchemeML model)
         {
             try
@@ -78,6 +79,7 @@ namespace E_InsuranceApp.Controllers
         }
 
         [HttpDelete("DeleteSchemeById/{Id}")]
+        [Authorize(Roles = "Employee")]
         public async Task<ActionResult> DeleteSchemeAsync(int Id)
         {
             try

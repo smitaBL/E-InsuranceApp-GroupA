@@ -131,6 +131,7 @@ namespace E_InsuranceApp.Controllers
         }
 
         [HttpDelete("Policy/DeleteById")]
+        [Authorize(Roles ="Customer")]
         public async Task<IActionResult> DeletePolicyByIdAsync(int id)
         {
             try
@@ -154,7 +155,7 @@ namespace E_InsuranceApp.Controllers
         }
 
         [HttpPut("Policy/UpdateById")]
-        [Authorize(Roles = "Customer")]
+        [Authorize(Roles = "Customer,Agent")]
         public async Task<IActionResult> UpdatePolicyByIdAsync(int id, PolicyML model)
         {
             try

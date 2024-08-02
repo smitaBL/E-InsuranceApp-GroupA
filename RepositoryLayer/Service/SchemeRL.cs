@@ -56,12 +56,11 @@ namespace RepositoryLayer.Service
                     new SqlParameter("@SchemePrice", model.SchemePrice),
                     new SqlParameter("@SchemeCover", model.SchemeCover),
                     new SqlParameter("@SchemeTenure", model.SchemeTenure),
-                    new SqlParameter("@PlanID", model.PlanID),
-                    new SqlParameter("@CreatedAt", model.CreatedAt)
+                    new SqlParameter("@PlanID", model.PlanID)
                 };
 
                 var result = await _context.Schemes
-                    .FromSqlRaw("EXEC CreateScheme @SchemeName, @SchemeDetails, @SchemePrice, @SchemeCover, @SchemeTenure, @PlanID, @CreatedAt", parameters)
+                    .FromSqlRaw("EXEC CreateScheme @SchemeName, @SchemeDetails, @SchemePrice, @SchemeCover, @SchemeTenure, @PlanID", parameters)
                     .ToListAsync();
 
                 var scheme = result.FirstOrDefault();

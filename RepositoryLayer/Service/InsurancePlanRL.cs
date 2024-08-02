@@ -34,8 +34,7 @@ namespace RepositoryLayer.Service
                 var planID = await _context.Database.ExecuteSqlInterpolatedAsync($@"
                 EXEC CreateInsurancePlan 
                     @PlanName = {model.PlanName}, 
-                    @PlanDetails = {model.PlanDetails}, 
-                    @CreatedAt = {model.CreatedAt}");
+                    @PlanDetails = {model.PlanDetails}");
 
                 if (planID == 0)
                 {
