@@ -132,16 +132,16 @@ namespace E_InsuranceApp.Controllers
 
         [HttpDelete("Policy/DeleteById")]
         [Authorize(Roles ="Customer")]
-        public async Task<IActionResult> DeletePolicyByIdAsync(int id)
+        public async Task<IActionResult> DeletePolicyByIdAsync(int PolicyId)
         {
             try
             {
-                await policyBL.DeletePolicyByIdAsync(id);
+                await policyBL.DeletePolicyByIdAsync(PolicyId);
 
                 responseML.Success = true;
                 responseML.Message = "Policy Deleted Successfully";
 
-                _logger.LogInformation($"Policy with ID: {id} deleted successfully");
+                _logger.LogInformation($"Policy with ID: {PolicyId} deleted successfully");
                 return StatusCode(200, responseML);
             }
             catch (PolicyException ex)
@@ -149,7 +149,7 @@ namespace E_InsuranceApp.Controllers
                 responseML.Success = false;
                 responseML.Message = ex.Message;
 
-                _logger.LogError($"Error deleting policy with ID: {id}: {ex.Message}");
+                _logger.LogError($"Error deleting policy with ID: {PolicyId}: {ex.Message}");
                 return StatusCode(400, responseML);
             }
         }

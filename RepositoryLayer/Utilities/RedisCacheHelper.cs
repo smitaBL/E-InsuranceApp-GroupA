@@ -10,9 +10,9 @@ namespace RepositoryLayer.Utilities
 {
     public class RedisCacheHelper
     {
-        public static T GetFromCache<T>(string cacheKey, IDistributedCache _cache) where T : class
+        public static T GetFromCache<T>(string cacheKey, IDistributedCache cache) where T : class
         {
-            var cachedData = _cache.Get(cacheKey);
+            var cachedData = cache.Get(cacheKey);
             if (cachedData != null)
             {
                 var cachedDataString = Encoding.UTF8.GetString(cachedData);
@@ -21,16 +21,23 @@ namespace RepositoryLayer.Utilities
             return null;
         }
 
-        public static void SetToCache<T>(string cacheKey, IDistributedCache _cache, T data, int absoluteExpirationMinutes = 2, int slidingExpirationMinutes = 1)
+        public static void SetToCache<T>(string cacheKey, IDistributedCache cache, T data, int absoluteExpirationMinutes = 20, int slidingExpirationMinutes = 10)
         {
-            var cachedDataString = JsonSerializer.Serialize(data);
-            var newDataToCache = Encoding.UTF8.GetBytes(cachedDataString);
+            try
+            {
+                var cachedDataString = JsonSerializer.Serialize(data);
+                var newDataToCache = Encoding.UTF8.GetBytes(cachedDataString);
 
-            var options = new DistributedCacheEntryOptions()
-                             .SetAbsoluteExpiration(DateTime.Now.AddMinutes(absoluteExpirationMinutes))
-                             .SetSlidingExpiration(TimeSpan.FromMinutes(slidingExpirationMinutes));
+                var options = new DistributedCacheEntryOptions()
+                                  .SetAbsoluteExpiration(DateTime.Now.AddMinutes(absoluteExpirationMinutes))
+                                  .SetSlidingExpiration(TimeSpan.FromMinutes(slidingExpirationMinutes));
 
-            _cache.Set(cacheKey, newDataToCache, options);
+                cache.Set(cacheKey, newDataToCache, options);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

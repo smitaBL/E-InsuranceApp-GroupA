@@ -130,19 +130,17 @@ namespace RepositoryLayer.Service
             }
         }
 
-      
+
 
         public async Task<CommissionEntity> GetByIdCommissionAsync(int agentId, int policyId)
         {
             try
             {
                 _logger.LogInformation("Fetching commission for AgentID: {AgentID}, PolicyID: {PolicyID}", agentId, policyId);
-                string cachedKey = "Get_Commission_By_Id";
+                string cachedKey = $"Get_Commission_By_Id_{agentId}_{policyId}";
                 var cachedCommission = RedisCacheHelper.GetFromCache<CommissionEntity>(cachedKey, _cache);
 
-                CommissionEntity commission;
-
-                if(cachedCommission != null)
+                if (cachedCommission != null)
                 {
                     return cachedCommission;
                 }
@@ -151,7 +149,7 @@ namespace RepositoryLayer.Service
                     .FromSqlRaw("EXEC GetCommissionById @AgentID={0}, @PolicyID={1}", agentId, policyId)
                     .ToListAsync();
 
-                commission = result.FirstOrDefault();
+                var commission = result.FirstOrDefault();
 
                 if (commission == null)
                 {
@@ -170,6 +168,7 @@ namespace RepositoryLayer.Service
                 throw new CommissionException(ex.Message);
             }
         }
+
 
         public async Task UpdateCommissionAsync(CommissionML commissionML, float commissionPercentage)
         {

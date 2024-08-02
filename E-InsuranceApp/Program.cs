@@ -155,6 +155,7 @@ try
     });
 
     //Redis
+    builder.Services.AddDistributedMemoryCache();
     builder.Services.AddStackExchangeRedisCache(options =>
     {
         options.Configuration = builder.Configuration["RedisCacheOptions:Configuration"];
